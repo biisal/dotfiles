@@ -6,9 +6,9 @@ return {
 		"tpope/vim-fugitive"
 	},
 	{ -- Show css colors
-		"brenoprata10/nvim-highlight-colors",
+		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("nvim-highlight-colors").setup({})
+			require("colorizer").setup()
 		end
 	},
 	{
