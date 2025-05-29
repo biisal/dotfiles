@@ -1,5 +1,5 @@
 return {
-	{ -- this is for catppuccin
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false,
@@ -21,10 +21,13 @@ return {
 				},
 				custom_highlights = function(colors)
 					return {
+						["@tag"] = { fg = "#FC7AFF" },
 						["@module"] = { fg = "#89dceb" },
-						["@variable"] = { fg = "#00FFA1" },
+						["@variable"] = { fg = "#ffffff" },
 						["@constructor"] = { fg = "#00EEFF", style = { "bold" } },
+						["@punctuation.bracket"] = { fg = "#f9e2af" },
 						Include = { fg = "#FF00A0" },
+						Function = { fg = "#FF0069", style = { "bold" } },
 					}
 				end,
 			})

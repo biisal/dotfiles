@@ -15,11 +15,13 @@ map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 map("n", "<C-s>", function()
-	local ok, _ = pcall(vim.lsp.buf.format, { async = true })
-	if not ok then print("LSP format failed") end
+	vim.lsp.buf.format()
 	vim.cmd("w")
-end, { desc = "Format and save" })
+end, { desc = "Save and format file" })
 
+
+-- copy whole file to clipboard
+map("n", "<C-c>", ":%y+<CR>", { desc = "Copy whole file to clipboard" })
 
 -- showing digonostics
 map("n", "<leader>g", vim.diagnostic.open_float)

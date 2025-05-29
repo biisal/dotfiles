@@ -3,13 +3,10 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 	    "saghen/blink.cmp",
-	    "williamboman/mason.nvim",
-	    "williamboman/mason-lspconfig.nvim",
 	},
 	config = function()
 	    local capabilities = require('blink.cmp').get_lsp_capabilities()
 	    local lspconfig = require("lspconfig")
-
 	    -- Lua LSP setup
 	    lspconfig.lua_ls.setup({
 		capabilities = capabilities,
@@ -36,7 +33,7 @@ return {
 	    -- vtsls lsp
 	    lspconfig.vtsls.setup({
 		capabilities = capabilities,
-		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json" , "html" },
+		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json", "html" },
 	    })
 
 	    -- html lsp
@@ -73,4 +70,3 @@ return {
 	end,
     },
 }
-
