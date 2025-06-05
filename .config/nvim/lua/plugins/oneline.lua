@@ -1,4 +1,8 @@
 return {
+	{
+		"christoomey/vim-tmux-navigator",
+		lazy = false
+	},
 	{ -- This is helps with ssh tunneling and copying to clipboard
 		"ojroques/vim-oscyank",
 	},
