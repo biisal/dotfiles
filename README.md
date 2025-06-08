@@ -1,7 +1,7 @@
 ## Very lightweight coonfiguration for my dotfiles
 
-* System : Arch Linux
+*OS System : Arch Linux
 * Shell : Zsh
-* Terminal : Wezterm
+* Terminal : Alacritty | Wezterm
 * Editor : Neovim
 and more 🙃

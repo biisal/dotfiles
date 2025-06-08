@@ -41,7 +41,7 @@ alias air='$(go env GOPATH)/bin/air'
 # git alias 
 alias gs='git status'
 alias ga='git add'
-alias gc='git commit -m'
+# alias gc='git commit -m'
 alias gp='git push'
 alias gl='git pull'
 alias gi='git init'
@@ -57,4 +57,7 @@ export EDITOR=nvim
 eval "$(fzf --zsh)"
 
 # showing ascii art on start
-cat $HOME/.config/ascii/go.txt 
+cat $HOME/.config/ascii/go.txt
+
+#custom scripts
+alias gc=$HOME/.config/scriptisto-scripts/ai-commit-push/main.go

@@ -7,6 +7,7 @@ return {
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup {
+				automatic_enable = false,
 				ensure_installed = {
 					"lua_ls",
 					"pyright",
@@ -16,9 +17,9 @@ return {
 					"tailwindcss",
 					"cssls",
 					"html",
+					"pyrefly"
 				},
-				handlers = {}, -- Disable automatic setup
-
+				handlers = {},
 			}
 		end,
 	},

@@ -5,8 +5,17 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
+			local keymap = vim.keymap
 			local capabilities = require('blink.cmp').get_lsp_capabilities()
 			local lspconfig = require("lspconfig")
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+				callback = function(ev)
+					local opts = { buffer = ev.buf, silent = true }
+					opts.desc = "Smart rename"
+					keymap.set("n", "gr", vim.lsp.buf.rename, opts) -- smart rename
+				end,
+			})
 			-- Lua LSP setup
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
@@ -20,7 +29,7 @@ return {
 				},
 			})
 
-			-- Pyright LSP setup with strict mode
+			-- pyright lsp
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 				filetypes = { "python" },
@@ -53,18 +62,10 @@ return {
 				capabilities = capabilities,
 			})
 			-- gopls lsp
-			--			lspconfig.gopls.setup({
-			--				capabilities = capabilities,
-			--				filetypes = { "go" },
-			--				settings = {
-			--					gopls = {
-			--						analyses = {
-			--							unusedparams = true,
-			--						},
-			--						staticcheck = true,
-			--					},
-			--				},
-			--			})
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+				filetypes = { "go" },
+			})
 
 			-- svelte lsp
 			lspconfig.svelte.setup({
