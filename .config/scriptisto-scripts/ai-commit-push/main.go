@@ -138,12 +138,31 @@ func main() {
 		case "y":
 			cmd := exec.Command("git", "commit", "-m", commitMessage)
 			if err := cmd.Run(); err != nil {
-				color.HiRed("Commit failed. Check you have added all changes. (git add .)")
+				color.HiRed("Commit failed.I think you didn't added all changes. (git add .)")
+				color.HiCyan("Should I add all changes ? [y/n]: ")
+				input, err := reader.ReadString('\n')
+				if err != nil {
+					log.Fatal(err)
+				}
+				input = strings.TrimSpace(input)
+				input = strings.ToLower(input)
+				if input == "y" {
+					color.HiCyan("Adding all changes...")
+					cmd := exec.Command("git", "add", ".")
+					if err := cmd.Run(); err != nil {
+						log.Fatal(err)
+					}
+					cmd = exec.Command("git", "commit", "-m", commitMessage)
+					if err := cmd.Run(); err != nil {
+						log.Fatal(err)
+					}
+				}
 			}
 			cmd = exec.Command("git", "push", "origin", "main")
 			if err := cmd.Run(); err != nil {
 				color.HiRed("Push failed : " + err.Error())
 			}
+			color.HiGreen("Pushed successfully.")
 			return
 		case "n":
 			return
