@@ -17,7 +17,7 @@ return {
 					"tailwindcss",
 					"cssls",
 					"html",
-					"pyrefly"
+					"eslint"
 				},
 				handlers = {},
 			}

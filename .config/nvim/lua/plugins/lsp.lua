@@ -28,6 +28,10 @@ return {
 					},
 				},
 			})
+			-- eslint_d lsp
+			lspconfig.eslint.setup({
+				capabilities = capabilities,
+			})
 
 			-- pyright lsp
 			lspconfig.pyright.setup({
@@ -36,7 +40,7 @@ return {
 				settings = {
 					python = {
 						analysis = {
-							typeCheckingMode = "strict",
+							typeCheckingMode = "standard",
 						},
 					},
 				},
