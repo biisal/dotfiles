@@ -21,12 +21,14 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/fatih/color"
+	"io"
 	"log"
 	"net/http"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/fatih/color"
 )
 
 const (
@@ -87,7 +89,7 @@ Now generate the commit message for this diff:`
 		return "", err
 	}
 	color.HiMagenta("Generating commit message...")
-	req, err := http.NewRequest("POST", "http://api.codeltix.com/api/v1/ai/gemini", bytes.NewBuffer(data))
+	req, err := http.NewRequest("POST", "https://api.codeltix.com/api/v1/ai/gemini", bytes.NewBuffer(data))
 	if err != nil {
 		return "", err
 	}
@@ -97,13 +99,16 @@ Now generate the commit message for this diff:`
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("failed to generate commit message while calling api: %w", err)
 	}
 	defer resp.Body.Close()
 
 	var resBody ResBody
 	if err = json.NewDecoder(resp.Body).Decode(&resBody); err != nil {
-		return "", err
+		// printing response
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		fmt.Println("Body : ", string(bodyBytes), "\nStatus : ", resp.Status)
+		return "", fmt.Errorf("failed to generate commit message while decoding response: %w", err)
 	}
 	return resBody.Message, nil
 }

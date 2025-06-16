@@ -44,3 +44,9 @@ vim.keymap.set('n', '<C-t>', AutoGitPushTerm)
 vim.keymap.set('t', '<C-v>', function()
 	vim.cmd("stopinsert")
 end)
+-- Lua in your config
+vim.keymap.set("n", "<leader>p", function()
+	require("toggleterm.terminal").Terminal
+		:new({ cmd = "tt", direction = "float" })
+		:toggle()
+end)

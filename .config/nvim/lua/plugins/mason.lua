@@ -17,7 +17,8 @@ return {
 					"tailwindcss",
 					"cssls",
 					"html",
-					"eslint"
+					"eslint",
+					"biome"
 				},
 				handlers = {},
 			}

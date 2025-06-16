@@ -6,11 +6,9 @@ return {
 	{ -- This is helps with ssh tunneling and copying to clipboard
 		"ojroques/vim-oscyank",
 	},
-	{ -- Git Plugin
-		"tpope/vim-fugitive"
-	},
 	{ -- Show css colors
 		"norcalli/nvim-colorizer.lua",
+		lazy = true,
 		config = function()
 			require("colorizer").setup()
 		end
@@ -28,8 +26,11 @@ return {
 	},
 	{
 		"amanbabuhemant/aneo.nvim",
+		lazy = true,
 		config = function()
 			require("aneo").setup()
 		end
-	}
+	}, {
+	"akinsho/toggleterm.nvim"
+}
 }
