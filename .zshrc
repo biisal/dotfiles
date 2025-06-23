@@ -5,10 +5,10 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # powerlevel10 setup
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
 # zsh plugins
@@ -20,7 +20,16 @@ zinit light Aloxaf/fzf-tab
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# PROMPT='%F{green}%n%f@%m:%F{cyan}%~%f %(!.#.$) ' # if pl10k is on then it will be replaced by pl10k prompt
+
+
+function git_status() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "🐱"
+  fi
+}
+
+PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}❯%f%b '
+# PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f %B%F{#FF00E4}❯%f%b '
 
 source $ZSH/oh-my-zsh.sh
 
@@ -28,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+[[ ":$PATH:" != *":$BUN_INSTALL/bin:"* ]] && export PATH="$BUN_INSTALL/bin:$PATH"
 
 . "$HOME/.local/bin/env"
 
@@ -61,3 +70,15 @@ cat $HOME/.config/ascii/go.txt
 
 #custom scripts
 alias gc=$HOME/.config/scriptisto-scripts/ai-commit-push/main.go
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# run_godo shortcut
+function run_godo() {
+ 	 godo
+}
+
+zle -N run_godo
+bindkey '^g' run_godo

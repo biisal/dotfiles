@@ -3,7 +3,7 @@ return {
 		"christoomey/vim-tmux-navigator",
 		lazy = false
 	},
-	{ -- This is helps with ssh tunneling and copying to clipboard
+	{ -- This helps with ssh tunneling and copying to clipboard
 		"ojroques/vim-oscyank",
 	},
 	{ -- Show css colors
@@ -31,6 +31,7 @@ return {
 			require("aneo").setup()
 		end
 	}, {
-	"akinsho/toggleterm.nvim"
+	dir = "~/.config/nvim/lua/my_color_scheme/"
 }
+
 }
