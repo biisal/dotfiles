@@ -18,8 +18,6 @@ return {
 		ft = "lua", -- only load on lua files
 		opts = {
 			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 			},
 		},
@@ -30,8 +28,6 @@ return {
 		config = function()
 			require("aneo").setup()
 		end
-	}, {
-	dir = "~/.config/nvim/lua/my_color_scheme/"
-}
+	},
 
 }

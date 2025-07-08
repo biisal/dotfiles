@@ -47,14 +47,6 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 # go hot reload
 alias air='$(go env GOPATH)/bin/air'
 
-# git alias 
-alias gs='git status'
-alias ga='git add'
-# alias gc='git commit -m'
-alias gp='git push'
-alias gl='git pull'
-alias gi='git init'
-
 #docker alias 
 alias dsa='docker stop $(docker ps -q)'
 alias dra='docker rm $(docker ps -a -q)'

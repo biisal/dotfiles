@@ -15,7 +15,12 @@ map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 map("n", "<C-s>", function()
-	vim.lsp.buf.format()
+	local filetype = vim.bo.filetype
+	if filetype == "json" then
+		vim.cmd("%!jq '.'")
+	else
+		vim.lsp.buf.format()
+	end
 	vim.cmd("w")
 end, { desc = "Save and format file" })
 
@@ -27,3 +32,5 @@ map("n", "<C-c>", ":%y+<CR>", { desc = "Copy whole file to clipboard" })
 map("n", "<leader>g", vim.diagnostic.open_float)
 map("n", "<leader>gn", vim.diagnostic.goto_next)
 map("n", "<leader>gp", vim.diagnostic.goto_prev)
+
+map("x", "p", "P")

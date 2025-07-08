@@ -32,17 +32,6 @@ return {
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 			})
-			-- lspconfig.biome.setup({
-			-- 	cmd = { "biome", "lsp-proxy" },
-			-- 	capabilities = capabilities,
-			-- 	filetypes = {
-			-- 		"javascript", "javascriptreact",
-			-- 		"typescript", "typescriptreact",
-			-- 		"tsx", "json", "html"
-			-- 	},
-			-- 	root_dir = require("lspconfig.util").root_pattern("Biomefile", "biome.json", "package.json", ".git"),
-			-- })
-
 			-- pyright lsp
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
@@ -50,7 +39,7 @@ return {
 				settings = {
 					python = {
 						analysis = {
-							typeCheckingMode = "standard",
+							typeCheckingMode = "basic",
 						},
 					},
 				},

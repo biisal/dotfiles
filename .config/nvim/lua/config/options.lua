@@ -1,5 +1,4 @@
 local option = vim.opt
-
 option.number = true
 --option.cursorline = true
 option.tabstop = 4

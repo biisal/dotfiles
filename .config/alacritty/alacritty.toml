@@ -3,7 +3,7 @@ normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
 size = 7
 
 [window]
-opacity = 0.93
+opacity = 0.73
 decorations = "none"
 
 [window.padding]
@@ -16,7 +16,7 @@ y = 1
 
 [colors]
 primary.foreground = "#FFFFFF"
-primary.background = "#0D0D13"
+primary.background = "#000000"
 cursor.text = "#011423"
 cursor.cursor = "#47FF9C"
 selection.text = "#CBE0F0"
