@@ -10,7 +10,11 @@ end, { desc = 'Toggle NvimTree' })
 
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<C-q>", function()
+	local bufnr = vim.api.nvim_get_current_buf()
+	vim.cmd("BufferLineCyclePrev")
+	vim.cmd("bdelete " .. bufnr)
+end, { desc = "Close current buffer and go to previous" })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 

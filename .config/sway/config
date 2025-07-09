@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font pango:monospace 15
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,13 +28,17 @@ font pango:monospace 10
 # Custom Settings On StartUp #
 ##############################
 
-exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id feh --bg-fill ~/.config/backgrounds/black-cat.jpg
+# exec --no-startup-id dex --autostart --environment i3
+exec_always swaybg -i ~/.config/backgrounds/black-cat.jpg -m fill
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id polybar mybar
-exec --no-startup-id picom -b
-exec --no-startup-id xset r rate 300 50
+exec --no-startup-id waybar
 
+exec  dunst
+
+input "type:keyboard" {
+	repeat_delay 350
+	repeat_rate 50
+}
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -59,7 +63,7 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+tiling_drag modifier
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
@@ -71,7 +75,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run
 
 #start the rofi dmenu
-bindsym $mod+space exec  rofi -show drun
+bindsym $mod+space exec wofi --show drun
 
 
 
@@ -112,7 +116,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -234,3 +238,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 for_window [class="^.*"] border pixel 0
 
 
+
+# Resize Alacritty to screen size, but not trigger Sway fullscreen
+bindsym $mod+Shift+f exec alacritty --class floating
+for_window [class="Alacritty" app_id="floating"] floating enable, move position 0 0, resize set width height

@@ -1,17 +1,20 @@
 #!/bin/zsh
 
-bat_status=$(cat /sys/class/power_supply/BAT0/status)
+read bat_status < /sys/class/power_supply/BAT0/status
 capacity=$(cat /sys/class/power_supply/BAT0/capacity)
 
 if [ "$capacity" -ge 80 ]; then
-    color="#00FF00"  # green
+    color="#00FF00"
 elif [ "$capacity" -ge 40 ]; then
-    color="#FFFF00"  # yellow
+    color="#FFFF00"
 elif [ "$capacity" -ge 20 ]; then
-	color="#FFA500"  # orange
+    color="#FFA500"
 else
-    color="#FF0000"  # red
-
+    color="#FF0000"
 fi
 
-echo "%{F$color}$bat_status $capacity%%{F-}"
+full_text="$bat_status $capacity%"
+full_text=${full_text:^^}
+
+echo "%{F$color}$full_text%{F-}"
+
