@@ -29,5 +29,7 @@ return {
 			require("aneo").setup()
 		end
 	},
+	-- wakatime
+	{ 'wakatime/vim-wakatime', lazy = false }
 
 }

@@ -24,11 +24,11 @@ export ZSH="$HOME/.oh-my-zsh"
 
 function git_status() {
   if git rev-parse --is-inside-work-tree &>/dev/null; then
-    echo "🐱"
+    echo ""
   fi
 }
 
-PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}❯%f%b '
+PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}%f%b '
 # PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f %B%F{#FF00E4}❯%f%b '
 
 source $ZSH/oh-my-zsh.sh
@@ -60,8 +60,6 @@ eval "$(fzf --zsh)"
 # showing ascii art on start
 cat $HOME/.config/ascii/go.txt
 
-#custom scripts
-alias gc=$HOME/.config/scriptisto-scripts/ai-commit-push/main.go
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -74,3 +72,15 @@ function run_godo() {
 
 zle -N run_godo
 bindkey '^g' run_godo
+
+
+function clear_screen_without_history() {
+	printf '\033[H\033[2J'
+	zle reset-prompt
+}
+
+zle -N clear_screen_without_history
+bindkey '^u' clear_screen_without_history
+
+# swagger alias
+alias swag=${HOME}/go/bin/swag

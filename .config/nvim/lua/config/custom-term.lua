@@ -35,7 +35,11 @@ function FloatingTerm(run_code)
 	local file_name, file_type = "", ""
 	if run_code then
 		file_type = vim.bo.filetype
-		file_name = vim.fn.expand("%")
+		if file_type == "go" then
+			file_name = "."
+		else
+			file_name = vim.fn.expand("%")
+		end
 	end
 	if floating_term_win and vim.api.nvim_win_is_valid(floating_term_win) then
 		vim.api.nvim_win_close(floating_term_win, true)

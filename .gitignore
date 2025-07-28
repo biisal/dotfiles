@@ -1,1 +1,3 @@
 .config/tmux/plugins
+**/.env
+**/.env.*
