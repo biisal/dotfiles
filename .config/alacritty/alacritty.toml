@@ -1,11 +1,3 @@
-[font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-size = 8
-
-[window]
-# opacity = 0.86
-decorations = "none"
-
 [window.padding]
 x = 3
 y = 0
@@ -14,31 +6,6 @@ y = 0
 x = 0
 y = 0
 
-[colors]
-primary.foreground = "#C0C0C0"         # Light gray text
-primary.background = "#0A0A0A"         # Deep black background
-cursor.text = "#0A0A0A"
-cursor.cursor = "#C0C0C0"
-selection.text = "#0A0A0A"
-selection.background = "#888888"
-
-[colors.normal]
-black   = "#1A1A1A"
-red     = "#A05050"  # Muted brick red
-green   = "#50A070"  # Dim olive green
-yellow  = "#888888"
-blue    = "#999999"
-magenta = "#AAAAAA"
-cyan    = "#BBBBBB"
-white   = "#C0C0C0"
-
-[colors.bright]
-black   = "#333333"
-red     = "#B06060"  # Slightly brighter muted red
-green   = "#60B080"  # Slightly brighter muted green
-yellow  = "#999999"
-blue    = "#AAAAAA"
-magenta = "#BBBBBB"
-cyan    = "#DDDDDD"
-white   = "#FFFFFF"
+[general]
+import = ["~/.config/alacritty/themes/dim.toml"]
 

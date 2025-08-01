@@ -4,8 +4,6 @@ local map = vim.keymap.set
 
 map("i", "jj", "<ESC>", { desc = "Escape" })
 
-map({ "n", "i" }, ";", ":", { desc = "CMD enter command mode", noremap = true })
-map("i", ":", ";", { noremap = true })
 
 -- copy whole file to clipboard
 map("n", "<C-c>", ":%y+<CR>", { desc = "Copy whole file to clipboard" })

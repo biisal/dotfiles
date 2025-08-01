@@ -18,7 +18,8 @@ return {
 					"cssls",
 					"html",
 					"eslint",
-					"biome"
+					"biome",
+					"clangd"
 				},
 				handlers = {},
 			}

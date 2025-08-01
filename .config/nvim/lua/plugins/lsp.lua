@@ -32,6 +32,10 @@ return {
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 			})
+			-- clangd lsp
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
 			-- pyright lsp
 			lspconfig.pyright.setup({
 				capabilities = capabilities,

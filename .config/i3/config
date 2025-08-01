@@ -9,8 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 # exec_always --no-startup-id  setxkbmap -option ctrl:swapcaps
-exec_always setxkbmap -option ctrl:swap_lalt_lctl
-exec --no-startup-id i3-sensible-terminal
 exec --no-startup-id dunst 
 set $mod Mod1
 
@@ -34,7 +32,7 @@ font pango:monospace 10
 exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id feh --bg-fill ~/.config/backgrounds/worrior.png
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id polybar mybar
+exec --no-startup-id polybar mybar & sleep 1 && ~/Desktop/bg-tasks/hook-polybar-power
 # exec --no-startup-id picom -b
 exec_always --no-startup-id xset r rate 300 50
 
@@ -238,3 +236,6 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 for_window [class="^.*"] border pixel 0
 
 
+exec_always --no-startup-id sh -c "sleep 2 && xmodmap ~/.Xmodmap"
+exec_always setxkbmap -option ctrl:swap_lalt_lctl
+exec --no-startup-id i3-sensible-terminal

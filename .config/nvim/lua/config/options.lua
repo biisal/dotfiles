@@ -8,6 +8,7 @@ option.clipboard = "unnamedplus"
 option.termguicolors = true
 option.winborder = "rounded"
 option.signcolumn = "yes"
+option.laststatus = 3
 -- option.scrolloff = 2
 
 vim.o.wrap = false

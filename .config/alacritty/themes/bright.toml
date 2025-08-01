@@ -1,18 +1,10 @@
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Bold" }
-size = 8 
+size = 8
 
 [window]
-# opacity = 0.90
+# opacity = 0.86
 decorations = "none"
-
-[window.padding]
-x = 0 
-y = 0 
-
-[font.offset]
-x = 0
-y = 0
 
 [colors]
 primary.foreground = "#FFFFFF"
@@ -41,4 +33,5 @@ blue    = "#A277FF"
 magenta = "#A277FF"
 cyan    = "#24EAF7"
 white   = "#24EAF7"
+
 

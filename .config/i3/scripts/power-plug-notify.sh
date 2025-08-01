@@ -4,7 +4,16 @@
 export DISPLAY=:0
 export XAUTHORITY=/home/avisek/.Xauthority
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+PLUG_MESSAGE="Boosting Power 🔋!!"
+UNPLUG_MESSAGE="Unplugged"
 
-
-notify-send "Boosting Power 🔋!!"
-sudo -u avisek XDG_RUNTIME_DIR="/run/user/$(id -u avisek)" polybar-msg cmd restart
+if [[ "$1" != "plug" && "$1" != "unplug" ]]; then
+	echo "usage: $0 [plug|unplug]"
+	exit 0
+fi
+if [ "$1" == "unplug" ]; then
+	notify-send "$UNPLUG_MESSAGE"
+else
+	notify-send "$PLUG_MESSAGE"
+fi
+sudo -u avisek XDG_RUNTIME_DIR="/run/user/$(id -u avisek)" polybar-msg action '#battery.hook.0'
