@@ -18,7 +18,7 @@ return {
 					"cssls",
 					"html",
 					"eslint",
-					"biome",
+					"bashls",
 					"clangd"
 				},
 				handlers = {},

@@ -36,6 +36,9 @@ return {
 			lspconfig.clangd.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+			})
 			-- pyright lsp
 			lspconfig.pyright.setup({
 				capabilities = capabilities,

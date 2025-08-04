@@ -1,3 +1,4 @@
+[ "$TERM" = "xterm-kitty" ] && export TERM=xterm-256color
 # zinit 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -43,9 +44,8 @@ export BUN_INSTALL="$HOME/.bun"
 
 #docker 
 export DOCKER_HOST=unix:///var/run/docker.sock
-
 # go hot reload
-alias air='$(go env GOPATH)/bin/air'
+alias air='$HOME/go/bin/air'
 
 #docker alias 
 alias dsa='docker stop $(docker ps -q)'
