@@ -46,7 +46,7 @@ return {
 				settings = {
 					python = {
 						analysis = {
-							typeCheckingMode = "basic",
+							typeCheckingMode = "strict",
 						},
 					},
 				},

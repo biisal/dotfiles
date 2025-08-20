@@ -25,16 +25,6 @@ font pango:monospace 10
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 
 
-##############################
-# Custom Settings On StartUp #
-##############################
-
-exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id feh --bg-fill ~/.config/backgrounds/worrior.png
-# exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id polybar mybar & sleep 1 && ~/Desktop/bg-tasks/hook-polybar-power
-# exec --no-startup-id picom -b
-exec_always --no-startup-id xset r rate 300 50
 
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
@@ -173,7 +163,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -235,7 +225,18 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 for_window [class="^.*"] border pixel 0
 
 
+##############################
+# Custom Settings On StartUp #
+##############################
+
+exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id feh --bg-fill ~/.config/backgrounds/astro-climb.png
+# exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id polybar mybar & sleep 1 && ~/Desktop/bg-tasks/hook-polybar-power
 exec_always --no-startup-id sh -c "sleep 2 && xmodmap ~/.Xmodmap"
 exec_always setxkbmap -option ctrl:swap_lalt_lctl
 exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Shift+x exec ~/.config/i3/scripts/prompt.sh "Are you sure to shutdown the system?" "systemctl poweroff"
+exec_always --no-startup-id xset r rate 200 50
 bindsym $mod+b workspace 2;exec brave
+# exec --no-startup-id picom -b

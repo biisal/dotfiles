@@ -58,7 +58,8 @@ export EDITOR=nvim
 eval "$(fzf --zsh)"
 
 # showing ascii art on start
-cat $HOME/.config/ascii/go.txt
+# cat $HOME/.config/ascii/go.txt
+fastfetch
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -84,3 +85,7 @@ bindkey '^u' clear_screen_without_history
 
 # swagger alias
 alias swag=${HOME}/go/bin/swag
+
+
+export PATH=$PATH:$HOME/go/bin
+export PATH="/home/avisek/bin:$PATH"

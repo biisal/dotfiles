@@ -16,4 +16,6 @@ if [ "$1" == "unplug" ]; then
 else
 	notify-send "$PLUG_MESSAGE"
 fi
-sudo -u avisek XDG_RUNTIME_DIR="/run/user/$(id -u avisek)" polybar-msg action '#battery.hook.0'
+# sudo -u avisek XDG_RUNTIME_DIR="/run/user/$(id -u avisek)" polybar-msg action '#battery.hook.0'
+sudo -u avisek XDG_RUNTIME_DIR="/run/user/$(id -u avisek)" pkill -RTMIN+5 dwmblocks 
+# killall dwmblocks && dwmblocks &

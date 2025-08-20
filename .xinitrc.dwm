@@ -1,0 +1,9 @@
+#!/bin/sh
+
+feh --bg-fill ~/.config/backgrounds/japanese.png &
+setxkbmap -option ctrl:swap_lalt_lctl
+xset r rate 200 50
+xmodmap ~/.Xmodmap
+dwmblocks &
+dunst &
+exec dwm
