@@ -28,5 +28,10 @@ return {
 		map('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 		map('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 		map('n', '<leader>cs', builtin.colorscheme, { desc = 'Telescope colorscheme' })
+
+		map('n', '<leader>dd', builtin.diagnostics, { desc = 'Telescope workspace diagnostics' })
+		map('n', '<leader>db', function()
+			builtin.diagnostics({ bufnr = 0 })
+		end, { desc = 'Telescope buffer diagnostics' })
 	end
 }

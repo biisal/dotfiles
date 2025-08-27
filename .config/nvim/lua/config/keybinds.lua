@@ -7,7 +7,8 @@ map("i", "jj", "<ESC>", { desc = "Escape" })
 
 -- copy whole file to clipboard
 map("n", "<C-c>", ":%y+<CR>", { desc = "Copy whole file to clipboard" })
-
+-- open comand mode using ;
+map("n", ";", ":", { desc = "Open command mode" })
 -- showing digonostics
 map("n", "<leader>g", vim.diagnostic.open_float)
 map("n", "<leader>gn", vim.diagnostic.goto_next)

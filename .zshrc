@@ -81,7 +81,7 @@ function clear_screen_without_history() {
 }
 
 zle -N clear_screen_without_history
-bindkey '^u' clear_screen_without_history
+# bindkey '^u' clear_screen_without_history
 
 # swagger alias
 alias swag=${HOME}/go/bin/swag

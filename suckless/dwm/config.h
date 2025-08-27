@@ -91,7 +91,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {"dmenu_run", "-i", "-p", "Run: ", NULL};
+static const char *dmenucmd[] = {
+    "j4-dmenu-desktop", "--dmenu=dmenu -i -p Run:", "--term=kitty", NULL};
 static const char *termcmd[] = {"kitty", NULL};
 static const char *brightup[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *brightdown[] = {"brightnessctl", "set", "5%-", NULL};
@@ -152,9 +153,9 @@ static const Key keys[] = {
     {0, XK_Print, spawn, {.v = cropScreenshotCmd}},
     {ControlMask, XK_Print, spawn, {.v = screenshotCmd}},
     {0, XF86XK_AudioRaiseVolume, spawn,
-     SHCMD("pw-volume change +5% && pkill -RTMIN+6 dwmblocks")},
+     SHCMD("pw-volume change +1% && pkill -RTMIN+6 dwmblocks")},
     {0, XF86XK_AudioLowerVolume, spawn,
-     SHCMD("pw-volume change -5% && pkill -RTMIN+6 dwmblocks")},
+     SHCMD("pw-volume change -1% && pkill -RTMIN+6 dwmblocks")},
     {0, XF86XK_AudioMute, spawn,
      SHCMD("pw-volume mute toggle && pkill -RTMIN+6 dwmblocks")},
 
