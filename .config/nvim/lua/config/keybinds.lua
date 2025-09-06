@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 local map = vim.keymap.set
 
 map("i", "jj", "<ESC>", { desc = "Escape" })
+map("i", "JJ", "<ESC>", { desc = "Escape" })
 
 
 -- copy whole file to clipboard

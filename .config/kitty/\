@@ -1,0 +1,43 @@
+# Kitty Color Configuration (Gray-tone Dim Colors)
+
+# Foreground / Background / Cursor
+# foreground              #C0C0C0
+# selection_background    #888888
+# selection_foreground    #0A0A0A
+# url_color               #8888AA
+# cursor                  #C0C0C0
+# active_border_color     #333333
+# inactive_border_color   #121212
+# active_tab_background   #0A0A0A
+# active_tab_foreground   #C0C0C0
+# inactive_tab_background #121212
+# inactive_tab_foreground #999999
+# tab_bar_background      #121212
+#
+# # Normal Colors (gray-tone muted)
+# color0  #1A1A1A
+# color1  #884444
+# color2  #448844
+# color3  #888844
+# color4  #444488
+# color5  #884488
+# color6  #448888
+# color7  #C0C0C0
+#
+# # Bright Colors (still muted, dim grayish)
+# color8  #333333
+# color9  #AA6666
+# color10 #66AA66
+# color11 #AAAA66
+# color12 #6666AA
+# color13 #AA66AA
+# color14 #66AAAA
+# color15 #DDDDDD
+#
+# # Extended Base16 Colors
+# color16 #AAAA66
+# color17 #444444
+# color18 #121212
+# color19 #222222
+# color20 #999999
+# color21 #999999

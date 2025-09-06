@@ -93,6 +93,9 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
     "j4-dmenu-desktop", "--dmenu=dmenu -i -p Run:", "--term=kitty", NULL};
+static const char *webapopencmd[] = {
+    "/home/avisek/.scripts/single-webapp-dmenu.sh", NULL};
+
 static const char *termcmd[] = {"kitty", NULL};
 static const char *brightup[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *brightdown[] = {"brightnessctl", "set", "5%-", NULL};
@@ -152,6 +155,7 @@ static const Key keys[] = {
     {0, XF86XK_MonBrightnessDown, spawn, {.v = brightdown}},
     {0, XK_Print, spawn, {.v = cropScreenshotCmd}},
     {ControlMask, XK_Print, spawn, {.v = screenshotCmd}},
+    {MODKEY, XK_a, spawn, {.v = webapopencmd}},
     {0, XF86XK_AudioRaiseVolume, spawn,
      SHCMD("pw-volume change +1% && pkill -RTMIN+6 dwmblocks")},
     {0, XF86XK_AudioLowerVolume, spawn,

@@ -87,5 +87,5 @@ zle -N clear_screen_without_history
 alias swag=${HOME}/go/bin/swag
 
 
-export PATH=$PATH:$HOME/go/bin
 export PATH="/home/avisek/bin:$PATH"
+export PATH=$PATH:$HOME/go/bin
