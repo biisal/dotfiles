@@ -46,7 +46,7 @@ return {
 				settings = {
 					python = {
 						analysis = {
-							typeCheckingMode = "strict",
+							typeCheckingMode = "basic",
 						},
 					},
 				},
@@ -79,6 +79,11 @@ return {
 
 			-- svelte lsp
 			lspconfig.svelte.setup({
+				capabilities = capabilities,
+			})
+
+			-- svelte lsp
+			lspconfig.emmet_language_server.setup({
 				capabilities = capabilities,
 			})
 		end,

@@ -20,13 +20,13 @@ static const char dmenufont[] = "JetBrainsMono Nerd Font:size=12";
 static const char col_gray1[] = "#0A0A0A";
 static const char col_light_gray[] = "#1F1F20";
 static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#bbbbbb";
+static const char col_gray3[] = "#929292";
 static const char col_gray4[] = "#eeeeee";
 static const char col_cyan[] = "#005577";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_light_gray, col_cyan},
+    [SchemeSel] = {col_gray4, col_gray1, col_cyan},
 };
 
 /* tagging */
@@ -148,6 +148,7 @@ static const Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY, XK_e, spawn, {.v = (const char *[]){"rofimoji", NULL}}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},

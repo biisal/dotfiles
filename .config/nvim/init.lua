@@ -1,6 +1,6 @@
 require('config.options')
-require('config.keybinds')
-require('config.lazy')
 require("config.custom-term")
 require("config.statusline")
 require("config.colors")
+require('config.keybinds')
+require('config.lazy')

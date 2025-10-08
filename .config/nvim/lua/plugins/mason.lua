@@ -19,6 +19,7 @@ return {
 					"html",
 					"eslint",
 					"bashls",
+					-- "emmet-language-server",
 					"clangd"
 				},
 				handlers = {},

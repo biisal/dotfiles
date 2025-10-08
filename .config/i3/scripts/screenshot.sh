@@ -3,7 +3,7 @@
 if [ "$1" = "crop" ]; then
   SCREENSHOT_DIR=~/Pictures/crop-screenshots
   FILE="$SCREENSHOT_DIR/crop-screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-  MSG="Crop-Screenshot Saved & Copied"
+  MSG="Crop-Screenshot Saved & Copied to $FILE"
   SHOT_COMMAND="scrot -s \"$FILE\""
 else 
   SCREENSHOT_DIR=~/Pictures/full-screenshots

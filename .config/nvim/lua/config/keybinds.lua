@@ -15,6 +15,10 @@ map("n", "<leader>g", vim.diagnostic.open_float)
 map("n", "<leader>gn", vim.diagnostic.goto_next)
 map("n", "<leader>gp", vim.diagnostic.goto_prev)
 
+
+-- map("n", "<C-d>", "<C-d>zz")
+-- map("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set('n', 'gd', function()
 	local params = vim.lsp.util.make_position_params()
 	local client = vim.lsp.get_active_clients({ bufnr = 0 })[1]
@@ -48,3 +52,37 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		end
 	end
 })
+
+
+local function MoveLineUp()
+	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+	if row == 1 then return end -- already at top
+
+	local buf     = 0
+	local current = vim.api.nvim_buf_get_lines(buf, row - 1, row, false)[1]
+	local above   = vim.api.nvim_buf_get_lines(buf, row - 2, row - 1, false)[1]
+
+	vim.api.nvim_buf_set_lines(buf, row - 2, row - 1, false, { current })
+	vim.api.nvim_buf_set_lines(buf, row - 1, row, false, { above })
+
+	vim.api.nvim_win_set_cursor(0, { row - 1, col })
+end
+
+-- Move line down
+local function MoveLineDown()
+	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+	local buf = 0
+	local line_count = vim.api.nvim_buf_line_count(buf)
+	if row == line_count then return end -- already at bottom
+
+	local current = vim.api.nvim_buf_get_lines(buf, row - 1, row, false)[1]
+	local below   = vim.api.nvim_buf_get_lines(buf, row, row + 1, false)[1]
+
+	vim.api.nvim_buf_set_lines(buf, row - 1, row, false, { below })
+	vim.api.nvim_buf_set_lines(buf, row, row + 1, false, { current })
+
+	vim.api.nvim_win_set_cursor(0, { row + 1, col })
+end
+
+map("n", "<C-k>", MoveLineUp)   -- Ctrl+k moves line up
+map("n", "<C-j>", MoveLineDown) -- Alt+j moves line down
