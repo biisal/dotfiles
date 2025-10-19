@@ -3,8 +3,12 @@
 feh --bg-fill ~/.config/backgrounds/gray-mountain.png
 setxkbmap -option ctrl:swap_lalt_lctl
 xset r rate 200 100
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 dwmblocks &
 dunst &
+
+export CLIPMENUD_PRIMARY=0
+clipmenud &
+
 kitty &
 exec dwm 

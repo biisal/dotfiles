@@ -209,10 +209,10 @@ gaps inner 10px
 gaps outer 10px
 
 # Print Screen for selection screenshot
-bindsym Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh crop
+bindsym Print exec --no-startup-id ~/.scripts/x-server/screenshot.sh crop
 
 # Alt + Print Screen for full-screen screenshot
-bindsym ctrl+Print exec --no-startup-id ~/.config/i3/scripts/screenshot.sh
+bindsym ctrl+Print exec --no-startup-id ~/.scripts/x-server/screenshot.sh
 
 # brightness controll
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%

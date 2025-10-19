@@ -30,7 +30,7 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "3", "4", "5", "6", "7", "8", "9"};
+static const char *tags[] = {"", "󰇥", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -96,13 +96,27 @@ static const char *dmenucmd[] = {
 static const char *webapopencmd[] = {
     "/home/avisek/.scripts/single-webapp-dmenu.sh", NULL};
 
+static const char *clipboardcmd[] = {
+    "sh", "-c", "clipmenu | xargs -r -0 xdotool key --clearmodifiers Return",
+    NULL};
+
+// static const char *braveDuckduckSearch[] = {
+//     "/home/avisek/.scripts/search-query.sh", "duckduckgo", NULL};
+
+static const char *braveDuckduckSearchNewWindow[] = {
+    "/home/avisek/.scripts/search-query.sh", "duckduckgo", "true", NULL};
+static const char *braveYoutubeSearch[] = {
+    "/home/avisek/.scripts/search-query.sh", "youtube", NULL};
+static const char *braveYoutubeSearchNewWindow[] = {
+    "/home/avisek/.scripts/search-query.sh", "youtube", "true", NULL};
+
 static const char *termcmd[] = {"kitty", NULL};
 static const char *brightup[] = {"brightnessctl", "set", "5%+", NULL};
 static const char *brightdown[] = {"brightnessctl", "set", "5%-", NULL};
 static const char *screenshotCmd[] = {
-    "/home/avisek/.config/i3/scripts/screenshot.sh", NULL};
+    "/home/avisek/.scripts/x-server/screenshot.sh", NULL};
 static const char *cropScreenshotCmd[] = {
-    "/home/avisek/.config/i3/scripts/screenshot.sh", "crop", NULL};
+    "/home/avisek/.scripts/x-server/screenshot.sh", "crop", NULL};
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_d, spawn, {.v = dmenucmd}}, // changed from p to d
@@ -157,10 +171,16 @@ static const Key keys[] = {
     {0, XK_Print, spawn, {.v = cropScreenshotCmd}},
     {ControlMask, XK_Print, spawn, {.v = screenshotCmd}},
     {MODKEY, XK_a, spawn, {.v = webapopencmd}},
+    {MODKEY, XK_s, spawn, {.v = braveDuckduckSearchNewWindow}},
+    {MODKEY, XK_c, spawn, {.v = clipboardcmd}},
+    {MODKEY | ShiftMask, XK_y, spawn, {.v = braveYoutubeSearchNewWindow}},
+    {MODKEY, XK_y, spawn, {.v = braveYoutubeSearch}},
     {0, XF86XK_AudioRaiseVolume, spawn,
-     SHCMD("pw-volume change +1% && pkill -RTMIN+6 dwmblocks")},
+     SHCMD("/home/avisek/suckless/scripts/vol-up-down.sh up && pkill -RTMIN+6 "
+           "dwmblocks")},
     {0, XF86XK_AudioLowerVolume, spawn,
-     SHCMD("pw-volume change -1% && pkill -RTMIN+6 dwmblocks")},
+     SHCMD("/home/avisek/suckless/scripts/vol-up-down.sh && pkill -RTMIN+6 "
+           "dwmblocks")},
     {0, XF86XK_AudioMute, spawn,
      SHCMD("pw-volume mute toggle && pkill -RTMIN+6 dwmblocks")},
 

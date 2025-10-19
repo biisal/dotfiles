@@ -13,7 +13,7 @@ static const char *colors[SchemeLast][2] = {
          "#0A0A0A"}, // normal: light gray text on deep black background
     [SchemeSel] =
         {"#0A0A0A",
-         "#888888"}, // selected: deep black text on muted gray selection
+         "#C8C8C8"}, // selected: deep black text on muted gray selection
     [SchemeOut] =
         {"#0A0A0A",
          "#BBBBBB"}, // output: deep black text on light gray background

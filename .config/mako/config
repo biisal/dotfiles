@@ -1,0 +1,53 @@
+# Timeout
+default-timeout=5000
+ignore-timeout=0
+
+# Position
+anchor=top-right
+margin=20
+padding=12
+
+# Size
+width=400
+height=120
+
+# Styling - Matching Rofi Theme
+background-color=#000000
+text-color=#E0E0E0
+border-color=#424242
+border-size=2
+border-radius=8
+
+# Font
+font=JetBrainsMono Nerd Font 12
+
+# Layout
+max-visible=3
+sort=-time
+layer=overlay
+
+# Icons
+icons=1
+max-icon-size=48
+
+# Progress bar
+progress-color=over #303030
+
+# Urgency levels
+[urgency=low]
+background-color=#0A0A0A
+border-color=#303030
+text-color=#BDBDBD
+default-timeout=3000
+
+[urgency=normal]
+background-color=#000000
+border-color=#424242
+text-color=#E0E0E0
+default-timeout=5000
+
+[urgency=critical]
+background-color=#121212
+border-color=#757575
+text-color=#FFFFFF
+default-timeout=0

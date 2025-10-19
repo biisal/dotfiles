@@ -1,0 +1,116 @@
+{
+	"layer": "top",
+	"position": "bottom",
+	"height": 22,
+	"spacing": 4,
+
+	"modules-left": [
+		"custom/menu", 
+		"ext/workspaces" , 
+		"dwl/window"
+	],
+	"modules-center": ["clock"],
+	"modules-right": ["tray", "battery", "memory", "network", 
+		"custom/pipewire"
+	],
+
+	"dwl/tags": {
+		"hide-vacant": false 
+	},
+	"ext/workspaces": {
+		"disable-scroll": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"on-click": "activate",
+		"persistent-workspaces": {
+			"*":[1,2,3,4,5,6,7,8,9]
+		},
+		"format-icons": {
+			"1": "󰣇",
+			"2": "󰈹",
+			"3": "󰇮",
+			"4": "",
+			"5": "",
+			"6": "",
+			"7": "",
+			"default": ""
+		}
+	},
+
+	"dwl/window": {
+		"format": "{title}",
+		"rewrite": {
+			"(.*)(- Brave)(.*)": "$1",
+			"(.*)(- Thunar)(.*)": "$1",
+			"(.*)(kitty)(.*)": "Kitty",
+			"(.*)(kew)(.*)": "$1"
+		},
+		"on-click": "",
+		"tooltip": false
+	},
+
+	"clock": { "format": "{:%I:%M %p <span color='#696969'>|</span> %b %d, %Y}",
+		"tooltip": false
+	},
+
+	"tray": {
+		"icon-size": 16,
+		"spacing": 16,
+		"show-passive-items": true
+	},
+
+	"battery": {
+		"states": {
+			"warning": 33,
+			"critical": 10
+		},
+		"format": "{capacity}%"
+	},
+
+	"memory": {
+		"format": "<span color='#8A2BE2'></span>{used:0.1f}G/{total:0.1f}G",
+		"tooltip": false,
+		"interval": 5,
+		"tooltip-format": "{used:0.2f}G/{total:0.2f}G"
+	},
+
+	"network": {
+		"format-wifi": "{ipaddr} ({signalStrength}%)",
+		"format-ethernet": " Ethernet",
+		"format-disconnected": " Disconnected",
+		"tooltip" : false
+	// "tooltip-format": "{ipaddr}"
+	},
+
+	"custom/pipewire": {
+		"exec": "pw-volume status | jq .percentage",
+		"signal": 8,
+		"interval": "once",
+		"format": "{}%",
+		"on-click": "pavucontrol"
+	},
+	"pulseaudio": {
+		"scroll-step": 1, // %, can be a float
+		"format": "{icon} {volume}%",
+		"format-muted": "󰖁",
+		"format-icons": {
+			"default": ["󰕿", "󰖀", "󰕾"]
+		},
+		"tooltip-format": false,
+		"on-click": "pavucontrol"
+	},
+
+
+
+	"custom/menu": {
+		"format": "󰀻",
+		"tooltip-format": "Applications Menu",
+		"on-click": "bash ~/.config/rofi/menu.sh"
+	},
+
+	"custom/utilities": {
+		"format": "",
+		"tooltip-format": "Utility Menu",
+		"on-click": "bash ~/scripts/utilities.sh"
+	}
+}

@@ -1,0 +1,221 @@
+/* =========================================
+   Waybar Theme — Gray-tone Dim (Kitty Match)
+   Clean Flat Version (No Shadows / No Borders)
+   ========================================= */
+
+/* Global Defaults */
+* {
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-weight: bold;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	border: none;
+}
+
+window#waybar {
+	background-color: rgba(18, 18, 18, 0.8);
+	color: #C0C0C0;
+}
+
+/* --- WORKSPACES (ext/workspaces) --- */
+#workspaces {
+	margin: 0 4px;
+	background: transparent;
+	color: #C0C0C0;
+}
+
+#workspaces button {
+	background: transparent;
+	border: none;
+	border-radius: 4px;
+	padding: 0 8px;
+	margin: 0 2px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 16px;
+	color: #888888;
+	box-shadow: none;
+	min-width: 30px;
+}
+
+#workspaces button.active {
+	background-color: #333333;
+	color: #DDDDDD;
+}
+
+#workspaces button.occupied {
+	color: #C0C0C0;
+}
+
+#workspaces button.urgent {
+	background-color: #AA6666;
+	color: #0A0A0A;
+}
+
+#workspaces button:hover {
+	background-color: #252525;
+	color: #DDDDDD;
+}
+
+/* --- DWL TAGS (if using dwl/tags) --- */
+#tags {
+	margin: 0 4px;
+	background: transparent;
+	color: #C0C0C0;
+}
+
+#tags button {
+	background: transparent;
+	border: none;
+	border-radius: 4px;
+	margin-left: -2px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 0;
+	box-shadow: none;
+}
+
+#tags button.occupied {
+	padding: 0 24px;
+	margin-left: 1px;
+	background-color: transparent;
+	color: #C0C0C0;
+	font-size: 16px;
+}
+
+#tags button.focused {
+	padding: 0 24px;
+	margin-left: 1px;
+	background-color: #333333;
+	color: #DDDDDD;
+	font-size: 16px;
+}
+
+#tags button.urgent {
+	padding: 0 24px;
+	margin-left: 1px;
+	background-color: #AA6666;
+	color: #0A0A0A;
+	font-size: 16px;
+}
+
+/* --- WINDOW TITLE --- */
+#window {
+	margin: 0 4px 0 2px;
+	padding-right: 4px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 14px;
+	color: #C0C0C0;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+#waybar.empty #window {
+	background: none;
+}
+
+/* --- CLOCK --- */
+#clock {
+	padding: 0 6px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 16px;
+	color: #C0C0C0;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- SYSTEM TRAY --- */
+#tray {
+	margin-left: 8px;
+	padding: 0 8px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 12px;
+	color: #C0C0C0;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- BATTERY --- */
+#battery {
+	padding: 0 6px;
+	font-family: "Sans", monospace;
+	font-size: 16px;
+	color: #AAAA66;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- MEMORY --- */
+#memory {
+	padding: 0 6px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 16px;
+	color: #8A2BE2;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- NETWORK --- */
+#network {
+	margin: 0 8px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 16px;
+	color: #66AAAA;
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- VOLUME / AUDIO --- */
+#custom-pipewire {
+	padding: 0 10px;
+	border-radius: 4px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 16px;
+	background-color: #333333;
+	color: #DDDDDD;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- CUSTOM BUTTONS --- */
+#custom-utilities {
+	padding: 0 10px;
+	border-radius: 4px 0 0 4px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 18px;
+	background-color: #333333;
+	color: #DDDDDD;
+	border: none;
+	box-shadow: none;
+}
+
+#custom-menu {
+	padding: 0 11px 0 8px;
+	border-radius: 0 4px 4px 0;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 18px;
+	background-color: #333333;
+	color: #DDDDDD;
+	border: none;
+	box-shadow: none;
+}
+
+/* --- TOOLTIP --- */
+tooltip {
+	background-color: rgba(18, 18, 18, 0.9);
+	border-radius: 4px;
+	border: none;
+	box-shadow: none;
+}
+
+tooltip label {
+	color: #C0C0C0;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 14px;
+}

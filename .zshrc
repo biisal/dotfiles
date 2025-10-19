@@ -89,3 +89,6 @@ alias swag=${HOME}/go/bin/swag
 
 export PATH="/home/avisek/bin:$PATH"
 export PATH=$PATH:$HOME/go/bin
+
+# vs code for wayalnd
+alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
