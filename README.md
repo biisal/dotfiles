@@ -1,13 +1,13 @@
 ## Very lightweight coonfiguration for my dotfiles
 
-* OS System : Arch Linux
+* OS : Arch Linux
 * Shell : Zsh
 * Terminal : Kitty 
 * Editor : Neovim
 and more 🙃
-* WM : i3 and dwm (currently using)
+* WM : Currently using mangowm
 
-![demo](./screenshots/myarch.png)
+![demo](./screenshots/myarch-mango.png)
 
 
 Thanks 
