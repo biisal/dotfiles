@@ -4,7 +4,7 @@ ignore-timeout=0
 
 # Position
 anchor=top-right
-margin=20
+margin=10
 padding=12
 
 # Size
@@ -19,10 +19,10 @@ border-size=2
 border-radius=8
 
 # Font
-font=JetBrainsMono Nerd Font 12
+font=JetBrainsMono Nerd Font 10 
 
 # Layout
-max-visible=3
+max-visible=4
 sort=-time
 layer=overlay
 

@@ -10,6 +10,11 @@ option.winborder = "rounded"
 option.signcolumn = "yes"
 option.laststatus = 3
 -- option.scrolloff = 2
+--
+
+option.foldenable = true
+option.foldmethod = "indent"
+option.foldlevel = 99
 
 vim.o.wrap = false
 

@@ -4,7 +4,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 -- wezterm.add_to_config(catppuccin)
 config.font = wezterm.font('JetBrainsMono Nerd Font', { weight = "Medium" })
-config.window_background_opacity = 0.93
+config.window_background_opacity = 0.00
 config.enable_tab_bar = false
 config.color_scheme = 'Catppuccin Mocha'
 config.colors = {
