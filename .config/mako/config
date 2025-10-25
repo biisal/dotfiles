@@ -47,7 +47,7 @@ text-color=#E0E0E0
 default-timeout=5000
 
 [urgency=critical]
-background-color=#121212
-border-color=#757575
+background-color=#2A0000
+border-color=#FF4444
 text-color=#FFFFFF
-default-timeout=0
+default-timeout=10000

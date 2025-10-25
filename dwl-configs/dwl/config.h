@@ -147,13 +147,17 @@ static const enum libinput_config_tap_button_map button_map =
   }
 
 /* commands */
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"foot", NULL};
 static const char *menucmd[] = {"rofi",        "-show",         "drun",
                                 "-show-icons", "-display-drun", "Run"};
 
 static const Key keys[] = {
     /* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
     /* modifier                  key                 function        argument */
+
+    {0, XKB_KEY_Print, spawn, SHCMD("~/.scripts/wayland/screenshot.sh crop")},
+    {WLR_MODIFIER_CTRL, XKB_KEY_Print, spawn,
+     SHCMD("~/.scripts/wayland/screenshot.sh")},
 
     {0, XKB_KEY_XF86AudioRaiseVolume, spawn,
      SHCMD("~/.scripts/wayland/vol.sh up someblocks RTMIN+6")},
@@ -180,10 +184,10 @@ static const Key keys[] = {
     {MODKEY, XKB_KEY_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XKB_KEY_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XKB_KEY_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XKB_KEY_space, setlayout, {0}},
+    {MODKEY, XKB_KEY_r, setlayout, {0}}, // modified from space to r
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_space, togglefloating, {0}},
     {MODKEY, XKB_KEY_e, togglefullscreen, {0}},
-    {MODKEY, XKB_KEY_0, view, {.ui = ~0}},
+    {WLR_MODIFIER_CTRL, XKB_KEY_0, view, {.ui = ~0}},
     {MODKEY | WLR_MODIFIER_SHIFT, XKB_KEY_parenright, tag, {.ui = ~0}},
     {MODKEY, XKB_KEY_comma, focusmon, {.i = WLR_DIRECTION_LEFT}},
     {MODKEY, XKB_KEY_period, focusmon, {.i = WLR_DIRECTION_RIGHT}},

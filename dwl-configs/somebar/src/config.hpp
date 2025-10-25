@@ -7,7 +7,7 @@
 constexpr bool topbar = true;
 
 constexpr int paddingX = 10;
-constexpr int paddingY = 3;
+constexpr int paddingY = 2;
 
 // See https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html
 constexpr const char *font = "JetBrainsMono Nerd Font Medium 12";
