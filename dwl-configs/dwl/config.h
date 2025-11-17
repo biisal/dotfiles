@@ -37,6 +37,7 @@ static const Rule rules[] = {
     /* examples: */
     {"Gimp_EXAMPLE", NULL, 0, 1,
      -1}, /* Start on currently visible tags floating, not tiled */
+    {"Firefox", NULL, 1 << 1, 0, -1},
 };
 
 /* layout(s) */
@@ -151,6 +152,10 @@ static const char *termcmd[] = {"foot", NULL};
 static const char *menucmd[] = {"rofi",        "-show",         "drun",
                                 "-show-icons", "-display-drun", "Run"};
 
+static const char *tofimenucmd[] = {
+    "/bin/sh", "-c", "~/.scripts/wayland/tofi-launcher.sh", NULL};
+static const char *browsercmd[] = {"firefox", NULL};
+
 static const Key keys[] = {
     /* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
     /* modifier                  key                 function        argument */
@@ -170,7 +175,8 @@ static const Key keys[] = {
     {0, XKB_KEY_XF86MonBrightnessDown, spawn, SHCMD("brightnessctl set 5%-")},
 
     {MODKEY, XKB_KEY_c, spawn, SHCMD("~/.scripts/wayland/clipboard.sh")},
-    {MODKEY, XKB_KEY_space, spawn, {.v = menucmd}},
+    {MODKEY, XKB_KEY_w, spawn, {.v = browsercmd}},
+    {MODKEY, XKB_KEY_space, spawn, {.v = tofimenucmd}},
     {MODKEY, XKB_KEY_Return, spawn, {.v = termcmd}},
     {MODKEY, XKB_KEY_j, focusstack, {.i = +1}},
     {MODKEY, XKB_KEY_k, focusstack, {.i = -1}},

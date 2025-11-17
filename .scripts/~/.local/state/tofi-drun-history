@@ -1,0 +1,2 @@
+1 4965	log.Println(err.Error())
+1 4929	INITFILE="$(strip_trailing_slash "$DIR")"

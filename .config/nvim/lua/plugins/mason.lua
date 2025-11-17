@@ -17,7 +17,7 @@ return {
 					"tailwindcss",
 					"cssls",
 					"html",
-					"eslint",
+					-- "eslint",
 					"bashls",
 					-- "emmet-language-server",
 					"clangd"

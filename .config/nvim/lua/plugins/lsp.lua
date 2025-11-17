@@ -16,6 +16,13 @@ return {
 					keymap.set("n", "gr", vim.lsp.buf.rename, opts) -- smart rename
 				end,
 			})
+
+			-- djlsp setup
+			lspconfig.djlsp.setup({
+				capabilities = capabilities,
+			})
+
+
 			-- Lua LSP setup
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,

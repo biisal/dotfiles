@@ -16,5 +16,7 @@ local function diagnostic_count()
 	return #parts > 0 and "[" .. table.concat(parts, "|") .. "]" or ""
 end
 
+
+
 _G.diagnostic_count = diagnostic_count
-vim.opt.statusline = "%f %m%=     %{v:lua.diagnostic_count()} %l,%c %P"
+vim.opt.statusline = "F:%f %m%=     %{v:lua.diagnostic_count()} %l,%c %P"
