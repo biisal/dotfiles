@@ -44,45 +44,24 @@ map("x", "p", "P")
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function()
-		local filetype = vim.bo.filetype
-		if filetype == "json" then
-			vim.cmd("%!jq '.'")
-		else
+		if vim.bo.filetype ~= "json" then
 			vim.lsp.buf.format()
+			return
 		end
-	end
+
+		local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+		local input = table.concat(lines, "\n")
+
+		local result = vim.system({ "jq", "." }, {
+			stdin = input,
+			text = true,
+		}):wait()
+
+		if result.code == 0 then
+			local formatted = vim.split(result.stdout, "\n", { trimempty = true })
+			vim.api.nvim_buf_set_lines(0, 0, -1, false, formatted)
+		else
+			vim.notify("JSON syntax error: " .. result.stderr, vim.log.levels.ERROR)
+		end
+	end,
 })
-
-
-local function MoveLineUp()
-	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-	if row == 1 then return end -- already at top
-
-	local buf     = 0
-	local current = vim.api.nvim_buf_get_lines(buf, row - 1, row, false)[1]
-	local above   = vim.api.nvim_buf_get_lines(buf, row - 2, row - 1, false)[1]
-
-	vim.api.nvim_buf_set_lines(buf, row - 2, row - 1, false, { current })
-	vim.api.nvim_buf_set_lines(buf, row - 1, row, false, { above })
-
-	vim.api.nvim_win_set_cursor(0, { row - 1, col })
-end
-
--- Move line down
-local function MoveLineDown()
-	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-	local buf = 0
-	local line_count = vim.api.nvim_buf_line_count(buf)
-	if row == line_count then return end -- already at bottom
-
-	local current = vim.api.nvim_buf_get_lines(buf, row - 1, row, false)[1]
-	local below   = vim.api.nvim_buf_get_lines(buf, row, row + 1, false)[1]
-
-	vim.api.nvim_buf_set_lines(buf, row - 1, row, false, { below })
-	vim.api.nvim_buf_set_lines(buf, row, row + 1, false, { current })
-
-	vim.api.nvim_win_set_cursor(0, { row + 1, col })
-end
-
-map("n", "<C-k>", MoveLineUp)   -- Ctrl+k moves line up
-map("n", "<C-j>", MoveLineDown) -- Alt+j moves line down

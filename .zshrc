@@ -92,3 +92,4 @@ export PATH=$PATH:$HOME/go/bin
 
 # vs code for wayalnd
 alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
+alias note='nvim "$HOME/notes.txt"'

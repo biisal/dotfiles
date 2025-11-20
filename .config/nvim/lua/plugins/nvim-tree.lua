@@ -7,7 +7,7 @@ return {
 	--   lazy = false, -- set to true if you prefer lazy loading
 	-- vim.keymap.set('n', 'gm', function()
 	-- 	require('nvim-tree.api').tree.toggle()
-	-- end, { desc = 'Toggle NvimTree' })
+	-- end, { desc = 'Toggle NvimTree' }),
 	--   config = function()
 	--     require("nvim-tree").setup({
 	--       -- your nvim-tree configuration here
