@@ -18,9 +18,9 @@ return {
 			})
 
 			-- djlsp setup
-			lspconfig.djlsp.setup({
-				capabilities = capabilities,
-			})
+			-- lspconfig.djlsp.setup({
+			-- 	capabilities = capabilities,
+			-- })
 
 
 			-- Lua LSP setup

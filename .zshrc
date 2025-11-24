@@ -56,7 +56,7 @@ export EDITOR=nvim
 
 # Shell integrations
 eval "$(fzf --zsh)"
-
+eval "$(zoxide init zsh)"
 # showing ascii art on start
 # cat $HOME/.config/ascii/go.txt
 fastfetch
@@ -92,4 +92,18 @@ export PATH=$PATH:$HOME/go/bin
 
 # vs code for wayalnd
 alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
+alias agy="antigravity  --ozone-platform=wayland"
 alias note='nvim "$HOME/notes.txt"'
+
+
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+alias cd="z"

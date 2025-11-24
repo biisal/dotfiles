@@ -1,4 +1,4 @@
-swaybg -i ~/backgrounds/astronaut-in-outside-space.jpg -m fill &
+wbg -s ~/backgrounds/exploring-space.png & 
 wl-paste --watch cliphist store &
 someblocks &
 foot &
