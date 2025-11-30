@@ -10,16 +10,18 @@ padding=12
 # Size
 width=400
 height=120
+# Colors
 
-# Styling - Matching Rofi Theme
-background-color=#000000
-text-color=#E0E0E0
-border-color=#424242
+background-color=#101326
+text-color=#cad3f5
+border-color=#8aadf4
+progress-color=over #363a4f
+
 border-size=2
-border-radius=8
+border-radius=4
 
 # Font
-font=JetBrainsMono Nerd Font 10 
+font=JetBrainsMono Nerd Font 15
 
 # Layout
 max-visible=4
@@ -35,19 +37,24 @@ progress-color=over #303030
 
 # Urgency levels
 [urgency=low]
-background-color=#0A0A0A
-border-color=#303030
+background-color=#2C2C2CBB
+border-color=#555555BB
 text-color=#BDBDBD
 default-timeout=3000
 
 [urgency=normal]
-background-color=#000000
-border-color=#424242
-text-color=#E0E0E0
 default-timeout=5000
 
 [urgency=critical]
-background-color=#2A0000
-border-color=#FF4444
+background-color=#AA0000FF
+border-color=#FF4444FF
 text-color=#FFFFFF
 default-timeout=10000
+
+[category=centered]
+anchor=center
+width=400
+height=200
+
+
+

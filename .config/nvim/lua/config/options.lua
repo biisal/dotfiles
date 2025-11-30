@@ -9,6 +9,11 @@ option.termguicolors = true
 option.winborder = "rounded"
 option.signcolumn = "yes"
 option.laststatus = 3
+option.numberwidth = 1
+vim.opt.cmdheight = 0
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+
 -- option.scrolloff = 2
 --
 

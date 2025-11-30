@@ -1,26 +1,8 @@
 [ "$TERM" = "xterm-kitty" ] && export TERM=xterm-256color
+
 # zinit 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-# powerlevel10 setup
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
+# ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# source "${ZINIT_HOME}/zinit.zsh"
 
 
 function git_status() {
@@ -28,13 +10,6 @@ function git_status() {
     echo ""
   fi
 }
-
-PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}%f%b '
-# PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f %B%F{#FF00E4}❯%f%b '
-
-source $ZSH/oh-my-zsh.sh
-
-
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
@@ -44,12 +19,7 @@ export BUN_INSTALL="$HOME/.bun"
 
 #docker 
 export DOCKER_HOST=unix:///var/run/docker.sock
-# go hot reload
-alias air='$HOME/go/bin/air'
 
-#docker alias 
-alias dsa='docker stop $(docker ps -q)'
-alias dra='docker rm $(docker ps -a -q)'
 
 # sudoeditor
 export EDITOR=nvim 
@@ -57,14 +27,10 @@ export EDITOR=nvim
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-# showing ascii art on start
-# cat $HOME/.config/ascii/go.txt
-fastfetch
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # run_godo shortcut
 function run_godo() {
@@ -72,29 +38,12 @@ function run_godo() {
 }
 
 zle -N run_godo
-bindkey '^g' run_godo
+# bindkey '^g' run_godo
 
-
-function clear_screen_without_history() {
-	printf '\033[H\033[2J'
-	zle reset-prompt
-}
-
-zle -N clear_screen_without_history
-# bindkey '^u' clear_screen_without_history
-
-# swagger alias
-alias swag=${HOME}/go/bin/swag
 
 
 export PATH="/home/avisek/bin:$PATH"
 export PATH=$PATH:$HOME/go/bin
-
-# vs code for wayalnd
-alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland'
-alias agy="antigravity  --ozone-platform=wayland"
-alias note='nvim "$HOME/notes.txt"'
-
 
 # yazi
 function y() {
@@ -106,4 +55,48 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+export MANPAGER="nvim +Man!"
+
+# zsh plugins
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light Aloxaf/fzf-tab
+# zinit light zsh-users/zsh-syntax-highlighting
+
+fpath+=(~/.zsh/plugins/zsh-completions/src)
+
+autoload -Uz compinit
+compinit -C
+
+source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.zsh/plugins/fzf-tab/fzf-tab.zsh"
+
+
+
+HISTFILE="$HOME/.zsh_history"
+setopt APPEND_HISTORY      
+setopt SHARE_HISTORY
+
+HISTSIZE=10000       # Max lines in memory
+SAVEHIST=10000       # Max lines in the file
+
+bindkey '^E' autosuggest-accept
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+bindkey '^A' beginning-of-line
+bindkey "^[[3~" delete-char
+
+setopt PROMPT_SUBST
+PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}%f%b '
+
+#docker alias 
+alias dsa='docker stop $(docker ps -q)'
+alias dra='docker rm $(docker ps -a -q)'
+alias note='nvim "$HOME/notes.txt"'
+# swagger alias
+alias swag=${HOME}/go/bin/swag
 alias cd="z"
+
+# opencode
+export PATH=/home/avisek/.opencode/bin:$PATH

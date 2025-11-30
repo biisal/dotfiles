@@ -5,94 +5,72 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
-			local keymap = vim.keymap
-			local capabilities = require('blink.cmp').get_lsp_capabilities()
 			local lspconfig = require("lspconfig")
+			local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+			-- 1. Setup UI & Keymaps (LspAttach)
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
 					local opts = { buffer = ev.buf, silent = true }
+
+					-- Disable document color (if supported/enabled)
+					-- Wrapped in pcall to prevent errors if server doesn't support it
+					pcall(vim.lsp.document_color.enable, false, ev.buf)
+
 					opts.desc = "Smart rename"
-					keymap.set("n", "gr", vim.lsp.buf.rename, opts) -- smart rename
+					vim.keymap.set("n", "gr", vim.lsp.buf.rename, opts)
 				end,
 			})
 
-			-- djlsp setup
-			-- lspconfig.djlsp.setup({
-			-- 	capabilities = capabilities,
-			-- })
+			-- 2. Define Servers & Configurations
+			-- Add new servers here. If they need default config, just leave the table empty {}.
+			local servers = {
+				html = {},
+				cssls = {},
+				tailwindcss = {},
+				svelte = {},
+				emmet_language_server = {},
+				eslint = {},
+				clangd = {},
+				bashls = {},
+				-- Web Dev / Typescript
+				vtsls = {
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json", "html" },
+				},
 
-
-			-- Lua LSP setup
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-				filetypes = { "lua" },
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
+				-- Python
+				pyright = {
+					filetypes = { "python" },
+					settings = {
+						python = {
+							analysis = { typeCheckingMode = "basic" },
 						},
 					},
 				},
-			})
-			-- eslint_d lsp
-			lspconfig.eslint.setup({
-				capabilities = capabilities,
-			})
-			-- clangd lsp
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-			})
-			-- pyright lsp
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-				filetypes = { "python" },
-				settings = {
-					python = {
-						analysis = {
-							typeCheckingMode = "basic",
+
+				-- Go (Golang)
+				gopls = {
+					filetypes = { "go" },
+					-- You can add gopls specific settings here for performance later
+				},
+
+				-- Lua
+				lua_ls = {
+					filetypes = { "lua" },
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
 						},
 					},
 				},
-			})
-			-- vtsls lsp
-			lspconfig.vtsls.setup({
-				capabilities = capabilities,
-				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json", "html" },
-			})
+			}
 
-			-- html lsp
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
-
-			-- css lsp
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-			})
-
-			-- tailwindcss lsp
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
-			})
-			-- gopls lsp
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-				filetypes = { "go" },
-			})
-
-			-- svelte lsp
-			lspconfig.svelte.setup({
-				capabilities = capabilities,
-			})
-
-			-- svelte lsp
-			lspconfig.emmet_language_server.setup({
-				capabilities = capabilities,
-			})
+			-- 3. Iterate and Setup
+			for name, config in pairs(servers) do
+				config.capabilities = capabilities
+				lspconfig[name].setup(config)
+			end
 		end,
 	},
 }
