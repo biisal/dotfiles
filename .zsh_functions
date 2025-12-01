@@ -1,0 +1,43 @@
+ZDOTDIR="$HOME/.zsh"
+function zsh_add_file() {
+  [[ -f "$ZDOTDIR/$1" ]] && source "$ZDOTDIR/$1"
+}
+
+function zsh_add_plugin() {
+  local repo="$1"
+  local plugin_name="${repo##*/}"
+
+  local plugin_dir="$ZDOTDIR/plugins/$plugin_name"
+
+  if [[ -d "$plugin_dir" ]]; then
+    # zsh_add_file "plugins/$plugin_name/$plugin_name.plugin.zsh"
+    zsh_add_file "plugins/$plugin_name/$plugin_name.zsh"
+    return
+  fi
+
+  # Otherwise → clone from GitHub
+  echo "Installing $plugin_name..."
+  git clone "https://github.com/$repo.git" "$plugin_dir"
+
+  # After cloning → load it
+  zsh_add_file "plugins/$plugin_name/$plugin_name.plugin.zsh"
+  zsh_add_file "plugins/$plugin_name/$plugin_name.zsh"
+}
+
+
+
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+
+git_status() {
+  git rev-parse --is-inside-work-tree &>/dev/null && echo ""
+}
