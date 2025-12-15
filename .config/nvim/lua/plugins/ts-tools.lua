@@ -1,0 +1,32 @@
+return {
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {
+	-- 		settings = {
+	-- 			-- Enable separate server instance for diagnostics (keeps UI smooth)
+	-- 			separate_diagnostic_server = true,
+	-- 			-- Publish diagnostics only on leaving insert mode (less aggressive)
+	-- 			publish_diagnostic_on = "insert_leave",
+	-- 			-- Show code actions as individual entries in the code action menu
+	-- 			expose_as_code_action = "all",
+	-- 			-- Personal preferences for imports and hints
+	-- 			tsserver_file_preferences = {
+	-- 				includeInlayParameterNameHints = "all",
+	-- 				includeCompletionsForModuleExports = true,
+	-- 				quotePreference = "auto",
+	-- 			},
+	-- 		},
+	-- 		-- Optional: Place your TypeScript-specific keymaps here
+	-- 		on_attach = function(client, bufnr)
+	-- 			local map = function(keys, func, desc)
+	-- 				vim.keymap.set("n", keys, func, { buffer = bufnr, desc = "TS: " .. desc })
+	-- 			end
+	--
+	-- 			map("<leader>oi", "TSToolsOrganizeImports", "Organize Imports")
+	-- 			map("<leader>rf", "TSToolsRenameFile", "Rename File")
+	-- 			map("<leader>aa", "TSToolsAddMissingImports", "Import All")
+	-- 		end,
+	-- 	},
+	-- },
+}

@@ -2,10 +2,10 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx = 1; /* border pixel of windows */
+static const unsigned int borderpx = 3; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int gappih = 20;  /* horiz inner gap between windows */
-static const unsigned int gappiv = 10;  /* vert inner gap between windows */
+static const unsigned int gappih = 0;   /* horiz inner gap between windows */
+static const unsigned int gappiv = 0;   /* vert inner gap between windows */
 static const unsigned int gappoh =
     10; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
@@ -13,28 +13,28 @@ static const unsigned int gappov =
 static int smartgaps =
     0; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1; /* 0 means no bar */
-static const int topbar = 0;  /* 0 means bottom bar */
+static const int topbar = 1;  /* 0 means bottom bar */
 
-static const char *fonts[] = {"Noto Sans:size=12:style=Medium",
+static const char *fonts[] = {"JetBrainsMono Nerd Font:style=Medium:size=12",
                               "JetBrainsMono Nerd Font:size=12",
                               "Noto Color Emoji:size=12"};
-static const char dmenufont[] = "JetBrainsMono Nerd Font:size=12";
+static const char dmenufont[] = "JetBrainsMono Nerd Font:style=Medium:size=12";
 
-static const char col_gray1[] = "#0A0A0A";
-static const char col_light_gray[] = "#1F1F20";
-static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#929292";
-static const char col_gray4[] = "#eeeeee";
-static const char col_cyan[] = "#005577";
+static const char col_bg[] = "#0e0e14"; // bg matches DWL
+static const char col_fg_inactive[] = "#8e9199";
+static const char col_fg_active[] = "#b6d0ea";
+
+static const char col_border[] = "#111118";
+static const char col_focus[] = "#4a6d9c";
 
 static const char *colors[][3] = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_gray1, col_cyan},
+    [SchemeNorm] = {col_fg_inactive, col_bg, col_border},
+    [SchemeSel] = {col_fg_active, col_bg, col_focus},
 };
-
 /* tagging */
-static const char *tags[] = {"", "󰇥", "3", "4", "5", "6", "7", "8", "9"};
+static const char *tags[] = {
+    "󰣇", "󰈹", " ", "4", "5", "6", "7", "8", "9",
+};
 
 static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor */
@@ -48,7 +48,7 @@ static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen =
-    1; /* 1 will force focus on the fullscreen window */
+    0; /* 1 will force focus on the fullscreen window */
 static const int refreshrate =
     120; /* refresh rate (per second) for client move/resize */
 

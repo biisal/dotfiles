@@ -18,6 +18,7 @@ static const Block blocks[] = {
 
     {"", "top -bn1 | grep 'Cpu(s)' | awk '{printf \"C:%d%%\", $2+$4}'", 10, 0},
     {"", "date '+%b %d (%a) | %I:%M%p' | tr '[:lower:]' '[:upper:]'", 2, 0},
+    // {"", "~/.scripts/show-bianry-time.sh", 2, 0},
     // battery status
     {"", "~/.scripts/battery-status.sh", 35, 5},
     {"  ", "pw-volume status | jq .percentage", 0, 6},

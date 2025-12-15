@@ -1,29 +1,31 @@
 /* =========================================
-   Waybar Theme — Gray-tone Dim (Kitty Match)
-   Clean Flat Version (No Shadows / No Borders)
+   Waybar Theme — Catppuccin Mocha (Wallpaper Match)
+   Matches the Deep Purple/Sunset Orange aesthetic
    ========================================= */
 
 /* Global Defaults */
 * {
-	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-family: "JetBrainsMono Nerd Font", "FontAwesome", monospace;
 	font-weight: bold;
 	font-size: 15px;
 	margin: 0;
 	padding: 0;
 	box-shadow: none;
 	border: none;
+	transition: background-color 0.3s, color 0.3s;
 }
 
 window#waybar {
-	background-color: rgba(18, 18, 18, 0.8);
-	color: #C0C0C0;
+	padding: 0 8px;
+	/* Deep Purple/Grey base with 90% opacity */
+	background-color: rgb(30, 30, 46);
+	color: #cdd6f4;
 }
 
-/* --- WORKSPACES (ext/workspaces) --- */
+/* --- WORKSPACES --- */
 #workspaces {
 	margin: 0 4px;
 	background: transparent;
-	color: #C0C0C0;
 }
 
 #workspaces button {
@@ -34,68 +36,77 @@ window#waybar {
 	margin: 0 2px;
 	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 16px;
-	color: #888888;
-	box-shadow: none;
+	color: #6c7086;
 	min-width: 30px;
 }
 
+/* --- IMPROVED ACTIVE WORKSPACE --- */
 #workspaces button.active {
-	background-color: #333333;
-	color: #DDDDDD;
+	/* Deep Purple Background (Mauve with 20% opacity) */
+	background-color: rgba(203, 166, 247, 0.3);
+
+	/* Bright Mauve Text */
+	color: #FFFFFF;
+
+	/* Optional: Subtle bottom border to "ground" it */
+	border-bottom: 2px solid #cba6f7;
+	border-radius: 4px 4px 2px 2px;
 }
 
 #workspaces button.occupied {
-	color: #C0C0C0;
+	color: #a6adc8;
+	/* Subtext0 */
 }
 
 #workspaces button.urgent {
-	background-color: #AA6666;
-	color: #0A0A0A;
+	background-color: #f38ba8;
+	/* Red */
+	color: #1e1e2e;
 }
 
 #workspaces button:hover {
-	background-color: #252525;
-	color: #DDDDDD;
+	background-color: #45475a;
+	/* Surface1 */
+	color: #f5c2e7;
+	/* Pink hover */
 }
 
-/* --- DWL TAGS (if using dwl/tags) --- */
+/* --- DWL TAGS --- */
 #tags {
 	margin: 0 4px;
 	background: transparent;
-	color: #C0C0C0;
+	color: #cdd6f4;
 }
 
 #tags button {
 	background: transparent;
-	border: none;
 	border-radius: 4px;
 	margin-left: -2px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 0;
-	box-shadow: none;
 }
 
 #tags button.occupied {
 	padding: 0 24px;
 	margin-left: 1px;
-	background-color: transparent;
-	color: #C0C0C0;
+	color: #a6adc8;
 	font-size: 16px;
 }
 
 #tags button.focused {
 	padding: 0 24px;
 	margin-left: 1px;
-	background-color: #333333;
-	color: #DDDDDD;
+	/* Matching the Workspaces style */
+	background-color: rgba(203, 166, 247, 0.20);
+	color: #cba6f7;
+	border-bottom: 2px solid #cba6f7;
 	font-size: 16px;
 }
 
 #tags button.urgent {
 	padding: 0 24px;
 	margin-left: 1px;
-	background-color: #AA6666;
-	color: #0A0A0A;
+	background-color: #f38ba8;
+	color: #1e1e2e;
 	font-size: 16px;
 }
 
@@ -103,12 +114,9 @@ window#waybar {
 #window {
 	margin: 0 4px 0 2px;
 	padding-right: 4px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 14px;
-	color: #C0C0C0;
+	color: #bac2de;
 	background: transparent;
-	border: none;
-	box-shadow: none;
 }
 
 #waybar.empty #window {
@@ -118,24 +126,19 @@ window#waybar {
 /* --- CLOCK --- */
 #clock {
 	padding: 0 6px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 16px;
-	color: #C0C0C0;
+	color: #f5e0dc;
+	/* Rosewater */
 	background-color: transparent;
-	border: none;
-	box-shadow: none;
 }
 
 /* --- SYSTEM TRAY --- */
 #tray {
 	margin-left: 8px;
 	padding: 0 8px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 12px;
-	color: #C0C0C0;
+	color: #cdd6f4;
 	background-color: transparent;
-	border: none;
-	box-shadow: none;
 }
 
 /* --- BATTERY --- */
@@ -143,79 +146,93 @@ window#waybar {
 	padding: 0 6px;
 	font-family: "Sans", monospace;
 	font-size: 16px;
-	color: #AAAA66;
-	background-color: transparent;
-	border: none;
-	box-shadow: none;
+	color: #a6e3a1;
+	/* Green */
+}
+
+#battery.charging,
+#battery.plugged {
+	color: #fab387;
+	/* Peach */
+}
+
+#battery.critical:not(.charging) {
+	color: #f38ba8;
+	/* Red */
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+/* --- CPU --- */
+#cpu {
+	padding: 0 10px;
+	color: #f38ba8;
+	/* Red */
+	background: transparent;
 }
 
 /* --- MEMORY --- */
 #memory {
-	padding: 0 6px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
-	font-size: 16px;
-	color: #8A2BE2;
-	background-color: transparent;
-	border: none;
-	box-shadow: none;
+	padding: 0 10px;
+	color: #f5c2e7;
+	/* Pink */
+	background: transparent;
 }
 
 /* --- NETWORK --- */
 #network {
-	margin: 0 8px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
+	padding: 0 10px;
+	color: #89b4fa;
+	/* Blue */
+	background: transparent;
+}
+
+#network.disconnected {
+	color: #f38ba8;
+}
+
+/* --- PULSEAUDIO --- */
+#pulseaudio {
+	padding: 0 10px;
+	color: #cba6f7;
+	/* Mauve */
+	background: transparent;
+}
+
+#pulseaudio.muted {
+	color: #6c7086;
+}
+
+/* --- POWER BUTTON --- */
+#custom-power {
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0 12px;
 	font-size: 16px;
-	color: #66AAAA;
+	color: #f38ba8;
+	/* Red */
 	background-color: transparent;
-	border: none;
-	box-shadow: none;
-}
-
-/* --- VOLUME / AUDIO --- */
-#custom-pipewire {
-	padding: 0 10px;
-	border-radius: 4px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
-	font-size: 16px;
-	background-color: #333333;
-	color: #DDDDDD;
-	border: none;
-	box-shadow: none;
-}
-
-/* --- CUSTOM BUTTONS --- */
-#custom-utilities {
-	padding: 0 10px;
-	border-radius: 4px 0 0 4px;
-	font-family: "JetBrainsMono Nerd Font", monospace;
-	font-size: 18px;
-	background-color: #333333;
-	color: #DDDDDD;
-	border: none;
-	box-shadow: none;
-}
-
-#custom-menu {
-	padding: 0 11px 0 8px;
-	border-radius: 0 4px 4px 0;
-	font-family: "JetBrainsMono Nerd Font", monospace;
-	font-size: 18px;
-	background-color: #333333;
-	color: #DDDDDD;
-	border: none;
-	box-shadow: none;
 }
 
 /* --- TOOLTIP --- */
 tooltip {
-	background-color: rgba(18, 18, 18, 0.9);
+	background-color: #11111b;
+	/* Crust */
+	border: 1px solid #313244;
 	border-radius: 4px;
-	border: none;
-	box-shadow: none;
 }
 
 tooltip label {
-	color: #C0C0C0;
+	color: #cdd6f4;
 	font-family: "JetBrainsMono Nerd Font", monospace;
 	font-size: 14px;
+}
+
+@keyframes blink {
+	to {
+		color: #fab387;
+	}
 }

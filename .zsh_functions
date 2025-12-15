@@ -38,6 +38,10 @@ function y() {
 
 
 
+
 git_status() {
-  git rev-parse --is-inside-work-tree &>/dev/null && echo ""
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+  user=$(git config user.name)
+  branch=$(git rev-parse --abbrev-ref HEAD)
+  echo "($user | $branch)"
 }

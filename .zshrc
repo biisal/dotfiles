@@ -55,9 +55,32 @@ PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}%f%b '
 
 alias dsa='docker stop $(docker ps -q)'
 alias dra='docker rm $(docker ps -a -q)'
-alias note='nvim "$HOME/notes.txt"'
+alias note='nvim "$HOME/notes.md"'
 alias swag=${HOME}/go/bin/swag
 alias cd="z"
 
 # opencode
 export PATH=/home/avisek/.opencode/bin:$PATH
+fastfetch
+
+
+mdn_logic() {
+    (
+        cd ~/mdn/files/en-us || return
+        fileName=$(fzf --prompt="mdn doc> " --preview="bat --color=always --style=numbers,changes --line-range :500 {}" < /dev/tty)
+        if [ -n "$fileName" ]; then
+            nvim -M -c "set nonumber norelativenumber wrap" -c "nnoremap q :quit<CR>" "$fileName" < /dev/tty
+        fi
+    )
+}
+
+mdn_widget() {
+    zle -I           
+    mdn_logic        
+    zle reset-prompt 
+}
+
+zle -N mdn_widget
+bindkey '^O' mdn_widget
+
+alias mdn=mdn_logic

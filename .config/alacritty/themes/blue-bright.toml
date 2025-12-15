@@ -1,35 +1,39 @@
 [window]
-opacity=0.94
-[window.padding]
-y = 6 
-x = 6  
+opacity = 1.0
+padding = { x = 6, y = 6 }
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font Propo", style = "Medium" }
-size = 17
-# size = 16
-
-[colors.bright]
-black   = "#444b6a"
-blue    = "#7da6ff"
-cyan    = "#0db9d7"
-green   = "#b9f27c"
-magenta = "#bb9af7"
-red     = "#ff7a93"
-white   = "#acb0d0"
-yellow  = "#ff9e64"
-
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 10
 
 [colors.primary]
-background = "#1a1b26"
-foreground = "#c0caf5"
+foreground = "#CDD6F4"
+background = "#0C0C14"
 
 [colors.normal]
-black   = "#15161e"
-red     = "#f7768e"
-green   = "#9ece6a"
-yellow  = "#e0af68"
-blue    = "#7aa2f7"
-magenta = "#bb9af7"
-cyan    = "#7dcfff"
-white   = "#a9b1d6"
+black   = "#45475A"
+red     = "#F38BA8"
+green   = "#A6E3A1"
+yellow  = "#F9E2AF"
+blue    = "#89B4FA"
+magenta = "#F5C2E7"
+cyan    = "#94E2D5"
+white   = "#BAC2DE"
+
+[colors.bright]
+black   = "#585B70"
+red     = "#F38BA8"
+green   = "#A6E3A1"
+yellow  = "#F9E2AF"
+blue    = "#89B4FA"
+magenta = "#F5C2E7"
+cyan    = "#94E2D5"
+white   = "#A6ADC8"
+
+[colors.selection]
+text       = "#1E1E2E"
+background = "#F5E0DC"
+
+[colors.cursor]
+text       = "#1E1E2E"
+cursor     = "#F5E0DC"

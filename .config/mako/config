@@ -10,12 +10,12 @@ padding=12
 # Size
 width=400
 height=120
-# Colors
 
-background-color=#101326
-text-color=#cad3f5
-border-color=#8aadf4
-progress-color=over #363a4f
+# --- Colors (Catppuccin Mocha) ---
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#cba6f7
+progress-color=over #313244
 
 border-size=2
 border-radius=4
@@ -32,29 +32,23 @@ layer=overlay
 icons=1
 max-icon-size=48
 
-# Progress bar
-progress-color=over #303030
-
 # Urgency levels
 [urgency=low]
-background-color=#2C2C2CBB
-border-color=#555555BB
-text-color=#BDBDBD
+background-color=#1e1e2e
+border-color=#6c7086
+text-color=#6c7086
 default-timeout=3000
 
 [urgency=normal]
 default-timeout=5000
 
 [urgency=critical]
-background-color=#AA0000FF
-border-color=#FF4444FF
-text-color=#FFFFFF
+background-color=#1e1e2e
+border-color=#f38ba8
+text-color=#f38ba8
 default-timeout=10000
 
 [category=centered]
 anchor=center
 width=400
 height=200
-
-
-

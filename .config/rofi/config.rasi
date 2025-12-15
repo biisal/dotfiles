@@ -1,79 +1,85 @@
 configuration {
-    display-drun: "Applications";
-    display-run: "Run";
-    display-window: "Windows";
-    display-ssh: "SSH";
-    display-combi: "All";
+    display-drun: "  ";
+    display-run: "  ";
+    display-window: "  ";
+    display-ssh: "  ";
+    display-combi: "  ";
     
-
-	timeout{
-		delay: 15;
-		action: "kb-cancel";
-	}	
+    timeout{
+        delay: 15;
+        action: "kb-cancel";
+    }    
 }
+
 * {
     font: "JetBrainsMono Nerd Font 14";
-    foreground: #E0E0E0;
-    background: #000000;
-    border-color: #212121;
+    
+    /* --- Catppuccin Mocha Palette --- */
+    bg-col:  #1e1e2e;
+    bg-col-light: #1e1e2e;
+    border-col: #cba6f7;
+    selected-col: #1e1e2e;
+    blue: #89b4fa;
+    fg-col: #cdd6f4;
+    fg-col2: #f38ba8;
+    grey: #6c7086;
+    
+    /* Global Variables */
+    background-color: @bg-col;
+    text-color: @fg-col;
     border-radius: 8px;
-    spacing: 4px;
-    padding: 8px;
-    selected-normal-foreground: #FFFFFF;
-    selected-normal-background: #424242;
-    selected-active-foreground: #FFFFFF;
-    selected-active-background: #616161;
-    selected-urgent-foreground: #FFFFFF;
-    selected-urgent-background: #757575;
-    alternate-normal-background: #0A0A0A;
-    alternate-active-background: #121212;
-    alternate-urgent-background: #1A1A1A;
-    urgent-foreground: #BDBDBD;
-    active-foreground: #E0E0E0;
+    margin: 0px;
+    padding: 0px;
+    spacing: 0px;
 }
 
-/* Window */
 window {
-    background-color: #000000;
+    background-color: @bg-col;
     border: 2px solid;
-    border-color: #424242;
+    border-color: @border-col;
     border-radius: 8px;
     width: 680px;
 }
 
-/* Layout */
 mainbox {
     background-color: transparent;
     border: 0;
-    spacing: 8px;
-}
-
-inputbar {
-    background-color: #121212;
-    border: 1px solid;
-    border-color: #303030;
-    border-radius: 6px;
     padding: 10px;
 }
 
-prompt {
-    text-color: #BDBDBD;
-    font-weight: bold;
+inputbar {
+    background-color: #313244;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 0px 0px 10px 0px;
+    children: [prompt, entry];
 }
 
-textbox {
-    text-color: #FFFFFF;
+prompt {
+    background-color: transparent;
+    text-color: #f38ba8;
+    font-weight: bold;
+    padding: 0px 10px 0px 0px;
+    margin: 0px 5px 0px 0px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
 }
 
 entry {
-    text-color: #E0E0E0;
+    background-color: transparent;
+    text-color: #cba6f7;
+    placeholder: "Search...";
+    placeholder-color: #6c7086;
 }
 
-/* List view */
 listview {
     background-color: transparent;
     lines: 6;
     fixed-height: true;
+    margin: 5px 0px 0px 0px;
     spacing: 4px;
     border: 0;
     scrollbar: false;
@@ -81,7 +87,7 @@ listview {
 
 element {
     background-color: transparent;
-    text-color: #E0E0E0;
+    text-color: @fg-col;
     border: 0;
     border-radius: 6px;
     padding: 8px;
@@ -89,64 +95,56 @@ element {
 
 element normal.normal {
     background-color: transparent;
-    text-color: #E0E0E0;
+    text-color: @fg-col;
 }
 
 element alternate.normal {
-    background-color: #0A0A0A;
-    text-color: #E0E0E0;
+    background-color: transparent;
+    text-color: @fg-col;
 }
 
 element selected.normal {
-    background-color: #424242;
-    text-color: #FFFFFF;
+    background-color: #313244;
+    text-color: #cba6f7;
     font-weight: bold;
 }
 
 element selected.active {
-    background-color: #616161;
-    text-color: #FFFFFF;
-    font-weight: bold;
+    background-color: #313244;
+    text-color: #cba6f7;
 }
 
 element selected.urgent {
-    background-color: #757575;
-    text-color: #FFFFFF;
-    font-weight: bold;
+    background-color: #f38ba8;
+    text-color: #1e1e2e;
 }
 
 element urgent.normal {
-    background-color: #1A1A1A;
-    text-color: #BDBDBD;
+    background-color: transparent;
+    text-color: #f38ba8;
 }
 
 element active.normal {
-    background-color: #1A1A1A;
-    text-color: #E0E0E0;
+    background-color: transparent;
+    text-color: #89b4fa;
 }
 
-/* Message */
 message {
-    background-color: #121212;
-    border: 1px solid;
-    border-color: #303030;
+    background-color: #313244;
     border-radius: 6px;
     padding: 8px;
+    margin: 10px 0px 0px 0px;
 }
 
 textbox {
     background-color: transparent;
-    text-color: #E0E0E0;
+    text-color: @fg-col;
 }
 
 error-message {
-    background-color: #1A1A1A;
-    border: 1px solid;
-    border-color: #616161;
+    background-color: #1e1e2e;
+    border: 2px solid;
+    border-color: #f38ba8;
     border-radius: 6px;
-    padding: 8px;
-}
-
-error-message textbox {
-    text-color: #BDBDBD;
+    padding: 10px;
 }

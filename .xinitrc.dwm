@@ -1,8 +1,8 @@
 #!/bin/sh
 
-feh --bg-fill ~/.config/backgrounds/gray-mountain.png
+feh --bg-fill ~/backgrounds/evening-sky.png
 setxkbmap -option ctrl:swap_lalt_lctl
-xset r rate 200 100
+xset r rate 200 200
 # xmodmap ~/.Xmodmap
 dwmblocks &
 dunst &

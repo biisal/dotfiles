@@ -29,14 +29,28 @@ return {
 				html = {},
 				cssls = {},
 				tailwindcss = {},
-				svelte = {},
+				-- svelte = {},
 				emmet_language_server = {},
 				eslint = {},
 				clangd = {},
 				bashls = {},
 				-- Web Dev / Typescript
+
+				-- tsserver = {
+				-- 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json", "html" },
+				-- 	settings = {
+				-- 		javascript = {
+				-- 			maxTsServerMemory = 512,
+				-- 		}
+				-- 	}
+				-- },
 				vtsls = {
 					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json", "html" },
+					settings = {
+						javascript = {
+							maxTsServerMemory = 512,
+						}
+					}
 				},
 
 				-- Python

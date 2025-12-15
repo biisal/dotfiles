@@ -11,6 +11,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"pyright",
+					-- "typescript-language-server",
 					"vtsls",
 					"gopls",
 					"svelte",
