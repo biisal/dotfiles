@@ -1,0 +1,100 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "context_servers": {},
+  "format_on_save": "off",
+  "ssh_connections": [
+    {
+      "host": "aws-server",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/ubuntu/Desktop/eai/enhanceaiart/./"]
+        }
+      ]
+    }
+  ],
+  "disable_ai": false,
+  "buffer_line_height": "standard",
+  "agent_buffer_font_size": 14.0,
+  "agent_ui_font_size": 18.0,
+  "ui_font_family": "JetBrainsMonoNL Nerd Font",
+  "buffer_font_weight": 600.0,
+  "expand_excerpt_lines": 16,
+  "agent": {
+    "default_profile": "write",
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5"
+    },
+    "model_parameters": []
+  },
+  "features": {
+    "edit_prediction_provider": "supermaven"
+  },
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font Mono",
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
+  "file_types": {
+    "html": ["*.html"],
+    "python": ["*.py"]
+  },
+  "icon_theme": "Material Icon Theme",
+  "base_keymap": "VSCode",
+  "ui_font_size": 16.8,
+  "buffer_font_size": 21.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Mocha - No Italics",
+    "dark": "Catppuccin Mocha (Blur) [Heavy]"
+  },
+  "experimental.theme_overrides": {
+    "background": "#0C0C14BF",
+    "background.appearance": "transparent",
+
+    "panel.background": "#00000000",
+    "editor.background": "#00000000",
+    "terminal.background": "#00000066",
+    "tab_bar.background": "#00000000",
+    "status_bar.background": "#00000000",
+    "toolbar.background": "#00000000",
+    "editor.gutter.background": "#00000000",
+
+    "tab.active_background": "#313244",
+    "tab.inactive_background": "#00000000",
+
+    "border": "#00000000",
+    "border.variant": "#00000000",
+    "border.focused": "#ffffff",
+
+    "elevated_surface.background": "#1e1e2e",
+
+    // 4. SOLID Hover Information (LSP / Errors)
+    "hint.background": "#0C0C14",
+    "error.background": "#0C0C14",
+    "warning.background": "#0C0C14",
+    "info.background": "#0C0C14",
+
+    // 5. Title Bar (Solid)
+    "title_bar.background": "#0C0C14"
+  },
+  "gutter": {
+    "min_line_number_digits": 0,
+    "line_numbers": true,
+    "runnables": false, // Removes the "play" button space (for tests/main)
+    "folds": false, // Removes the arrow space for collapsing code
+    "breakpoints": false // Removes the red dot space for debugging
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  }
+}
