@@ -26,6 +26,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "26097a4eb95b391d0308c1b77cce89b28bbc9916" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
+  "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
   "vim-instant-markdown": { "branch": "main", "commit": "e62da3d05500c0cce24f498e5c1184fe99cbe231" },
   "vim-oscyank": { "branch": "main", "commit": "d67d76b2f19b868b70a1cf33a779d71dc092cb30" },
   "vim-tmux-navigator": { "branch": "master", "commit": "c45243dc1f32ac6bcf6068e5300f3b2b237e576a" },
