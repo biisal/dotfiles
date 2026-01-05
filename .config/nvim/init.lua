@@ -4,4 +4,4 @@ require("config.custom-term")
 -- require("config.colors")
 require('config.keybinds')
 require('config.lazy')
-print("init")
+

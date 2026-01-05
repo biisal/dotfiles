@@ -1,6 +1,5 @@
 return {
-	{
-		'vimpostor/vim-tpipeline',
+	{ 'vimpostor/vim-tpipeline',
 		config = function()
 			local vg = vim.g
 			vg.tpipeline_autoembed = 1

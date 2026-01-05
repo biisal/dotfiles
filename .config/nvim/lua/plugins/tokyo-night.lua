@@ -1,5 +1,6 @@
 return {
 	"folke/tokyonight.nvim",
+	dependencies = { "nvim-tree/nvim-tree.lua" },
 	lazy = false,
 	priority = 1000,
 	opts = {},

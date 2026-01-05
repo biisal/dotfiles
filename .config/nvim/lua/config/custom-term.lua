@@ -71,8 +71,8 @@ function FloatingTerm(run_code)
 	end
 end
 
-vim.keymap.set('n', '<C-y>', FloatingTerm)
-vim.keymap.set('t', '<C-y>', FloatingTerm)
+vim.keymap.set('n', '<C-`>', FloatingTerm)
+vim.keymap.set('t', '<C-`>', FloatingTerm)
 vim.keymap.set("n", "<F2>", function()
 	FloatingTerm(true)
 end)

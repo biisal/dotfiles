@@ -11,8 +11,8 @@ option.winborder = "rounded"
 option.signcolumn = "yes"
 option.laststatus = 3
 option.numberwidth = 1
-vim.opt.cmdheight = 1
-vim.opt.cursorline = true
+vim.opt.cmdheight = 0
+vim.opt.cursorline = false
 -- vim.opt.cursorlineopt = "number"
 
 -- option.scrolloff = 2
@@ -34,3 +34,17 @@ vim.diagnostic.config {
 	update_in_insert = true,
 	severity_sort = true,
 }
+
+
+-- Dynamic Kitty padding: 0 in Neovim, restore on exit
+vim.api.nvim_create_autocmd({ "VimEnter", "VimResume" }, {
+	callback = function()
+		os.execute("kitty @ set-spacing padding=0")
+	end
+})
+
+vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
+	callback = function()
+		os.execute("kitty @ set-spacing padding-h=10 padding-v=0")
+	end
+})
