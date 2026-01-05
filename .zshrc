@@ -1,6 +1,5 @@
 [ "$TERM" = "xterm-kitty" ] && export TERM=xterm-256color
 
-. "$HOME/.local/bin/env"
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -13,9 +12,8 @@ export BUN_INSTALL="$HOME/.bun"
 
 
 # Shell integrations
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
-export PATH="/home/avisek/bin:$PATH"
 export PATH=$PATH:$HOME/go/bin
 export MANPAGER="nvim +Man!"
 export EDITOR=nvim 
@@ -34,7 +32,7 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "Aloxaf/fzf-tab"
 
 # Load fzf keybindings 
-source /usr/share/fzf/key-bindings.zsh 2>/dev/null
+source <(fzf --zsh)
 
 # History
 HISTFILE="$HOME/.zsh_history"
@@ -51,13 +49,13 @@ bindkey '^A' beginning-of-line
 bindkey "^[[3~" delete-char
 
 setopt PROMPT_SUBST
-PROMPT='%F{yellow}%n%f@%m %F{cyan}%~%f $(git_status) %B%F{#FF00E4}%f%b '
+PROMPT='%F{#66FF7E}%n%f@%m %F{#43C0FE}%~%f %F{#C39AFF}$(git_status)%f %B%F{#FF00E4}%f%b '
 
 alias dsa='docker stop $(docker ps -q)'
 alias dra='docker rm $(docker ps -a -q)'
-alias note='nvim "$HOME/notes.md"'
+# alias note='nvim "$HOME/notes.md"'
 alias swag=${HOME}/go/bin/swag
-alias cd="z"
+# alias cd="z"
 
 # opencode
 export PATH=/home/avisek/.opencode/bin:$PATH
@@ -84,3 +82,57 @@ zle -N mdn_widget
 bindkey '^O' mdn_widget
 
 alias mdn=mdn_logic
+
+. "$HOME/.local/bin/env"
+
+
+note_logic(){
+	cd ~/notes || return
+	nvim "$(date +%Y/%b-%d | tr 'A-Z' 'a-z').md"
+	cd - > /dev/null
+}
+notes_logic() { 
+	cd ~/notes || return 
+	local count=$(ls -1 **/*.md | wc -l | tr -d ' ')
+	fileName=$(fzf --prompt="~/notes [$count]> " --border=rounded \
+		--margin=1,2 \
+		--no-sort \
+		--preview-window="right:60%:border-left" \
+		--preview="bat --color=always --style=numbers,changes --line-range :500 {}" < /dev/tty)
+		if [ -n "$fileName" ]; then
+		nvim $fileName
+		fi
+		cd - > /dev/null
+}
+alias notes=notes_logic
+alias note=note_logic
+
+
+
+d_logic(){
+	cd ~/diary || return
+	nvim "$(date +%Y/%b-%d | tr 'A-Z' 'a-z').md"
+	cd - > /dev/null
+}
+
+ds_logic() {
+	cd ~/diary || return
+	local count=$(ls -1 **/*.md | wc -l | tr -d ' ')
+	fileName=$(fzf --prompt="~/diary [$count]> " --border=rounded \
+		--margin=1,2 \
+		--no-sort \
+		--preview-window="right:60%:border-left" \
+		--preview="bat --color=always --style=numbers,changes --line-range :500 {}" < /dev/tty)
+	if [ -n "$fileName" ]; then
+		nvim "$fileName"
+	fi
+	cd - > /dev/null
+}
+
+alias d=d_logic
+alias ds=ds_logic
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/avisek/.lmstudio/bin"
+# End of LM Studio CLI section
+
