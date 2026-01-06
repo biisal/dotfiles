@@ -10,7 +10,8 @@ return {
 		local map = vim.keymap.set
 		map("n", "<leader>fg", builtin.git_files, {})
 		map("n", "<leader>fr", builtin.live_grep, {})
-		map("n", '<C-p>', builtin.find_files, {})
+		-- map("n", '<C-p>', builtin.find_files, {})
+		map("n", "<leader>ff", builtin.find_files, {})
 		map("n", "<leader>fb", builtin.buffers, {})
 		map("n", "<leader>fh", ":Telescope find_files hidden=true <CR>")
 

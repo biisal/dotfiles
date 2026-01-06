@@ -60,7 +60,20 @@ return {
 					},
 				},
 				gopls = {
-					filetypes = { "go" },
+					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					settings = {
+						gopls = {
+							analyses = {
+								unusedparams = true,
+								shadow = true,
+								unusedwrite = true,
+								nilness = true,
+								-- "fieldalignment" has been removed here
+							},
+							staticcheck = true,
+							gofumpt = true,
+						},
+					},
 				},
 				lua_ls = {
 					filetypes = { "lua" },
