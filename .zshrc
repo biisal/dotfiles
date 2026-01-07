@@ -46,7 +46,10 @@ bindkey '^E' autosuggest-accept
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 bindkey '^A' beginning-of-line
+bindkey '^?' backward-delete-char
 bindkey "^[[3~" delete-char
+bindkey '^[[D' backward-char
+bindkey '^[[C' forward-char
 
 setopt PROMPT_SUBST
 PROMPT='%F{#66FF7E}%n%f@%m %F{#43C0FE}%~%f %F{#C39AFF}$(git_status)%f %B%F{#FF00E4}%f%b '
@@ -112,27 +115,31 @@ alias note=note_logic
 d_logic(){
 	cd ~/diary || return
 	nvim "$(date +%Y/%b-%d | tr 'A-Z' 'a-z').md"
+	rm ~/.cache/diary_md_files
 	cd - > /dev/null
 }
 
 ds_logic() {
 	cd ~/diary || return
-	local count=$(ls -1 **/*.md | wc -l | tr -d ' ')
-	fileName=$(fzf --prompt="~/diary [$count]> " --border=rounded \
+	cache="$HOME/.cache/diary_md_files"
+	if [ ! -f "$cache" ]; then
+		mkdir -p ~/.cache
+		fd -e md . \
+			| sort -t/ -k1,1 -k2,2M -k3,3n -r \
+			> "$cache"
+	fi
+	count=$(wc -l < "$cache")
+	fileName=$(fzf < "$cache" \
+		--prompt="~/diary [$count]> " \
+		--border=rounded \
 		--margin=1,2 \
 		--no-sort \
 		--preview-window="right:60%:border-left" \
-		--preview="bat --color=always --style=numbers,changes --line-range :500 {}" < /dev/tty)
-	if [ -n "$fileName" ]; then
-		nvim "$fileName"
-	fi
+		--preview='sleep 0.1; bat --color=always --style=numbers --line-range :200 {}')
+
+	[ -n "$fileName" ] && nvim "$fileName"
+
 	cd - > /dev/null
 }
-
 alias d=d_logic
 alias ds=ds_logic
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/avisek/.lmstudio/bin"
-# End of LM Studio CLI section
-
