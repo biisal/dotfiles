@@ -7,94 +7,218 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "context_servers": {},
-  "format_on_save": "off",
-  "ssh_connections": [
-    {
-      "host": "aws-server",
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/ubuntu/Desktop/eai/enhanceaiart/./"]
-        }
-      ]
-    }
-  ],
-  "disable_ai": false,
-  "buffer_line_height": "standard",
-  "agent_buffer_font_size": 14.0,
-  "agent_ui_font_size": 18.0,
-  "ui_font_family": "JetBrainsMonoNL Nerd Font",
-  "buffer_font_weight": 600.0,
-  "expand_excerpt_lines": 16,
-  "agent": {
-    "default_profile": "write",
-    "always_allow_tool_actions": true,
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
-    },
-    "model_parameters": []
-  },
-  "features": {
-    "edit_prediction_provider": "supermaven"
-  },
-  "buffer_font_family": "JetBrainsMonoNL Nerd Font Mono",
-  "vim_mode": true,
-  "relative_line_numbers": "enabled",
-  "file_types": {
-    "html": ["*.html"],
-    "python": ["*.py"]
-  },
-  "icon_theme": "Material Icon Theme",
-  "base_keymap": "VSCode",
-  "ui_font_size": 16.8,
-  "buffer_font_size": 21.0,
-  "theme": {
-    "mode": "dark",
-    "light": "Catppuccin Mocha - No Italics",
-    "dark": "Catppuccin Mocha (Blur) [Heavy]"
-  },
-  "experimental.theme_overrides": {
-    "background": "#0C0C14BF",
-    "background.appearance": "transparent",
+	"show_completions_on_input": true,
+	// "auto_signature_help": true,
+	// "show_signature_help_after_edits": true,
+	"languages": {
+		"JavaScript": {
+			"formatter": "language_server",
+			"code_actions_on_format": {
+				"source.fixAll.eslint": false,
+			},
+		},
+		"Markdown": {
+			"completions": { "words": "fallback" },
+		},
+	},
+	"git_panel": {
+		"sort_by_path": false,
+		"tree_view": false,
+	},
+	"ssh_connections": [
+		{
+			"host": "ec2",
+			"args": [],
+			"projects": [
+				{
+					"paths": ["/home/ubuntu/Desktop/coding/python/./"],
+				},
+			],
+		},
+	],
+	"lsp": {
+		"gopls": {
+			"initialization_options": {
+				"staticcheck": true,
+				"gofumpt": true,
+				"completeUnimported": true,
+				"analyses": {
+					"unusedparams": true,
+					"shadow": true,
+					"unusedwrite": true,
+					"nilness": true,
+					"useany": true,
+					"nonewvars": true,
+					"simplifyrange": true,
+				},
+				"codelenses": {
+					"generate": true,
+					"gc_details": true,
+					"test": true,
+					"tidy": true,
+					"vendor": true,
+					"regenerate_cgo": true,
+					"upgrade_dependency": true,
+					"run_govulncheck": true, // FIXED: The name is run_govulncheck, not vulncheck
+				},
+				"hints": {
+					"assignVariableTypes": true,
+					"compositeLiteralFields": true,
+					"compositeLiteralTypes": true,
+					"constantValues": true,
+					"functionTypeParameters": true,
+					"parameterNames": true,
+					"rangeVariableTypes": true,
+				},
+				"vulncheck": "Imports", // Correct: This enables the background scanning
+			},
+		},
+	},
+	"snippet_sort_order": "bottom",
+	"when_closing_with_no_tabs": "close_window",
+	"remove_trailing_whitespace_on_save": false,
+	"ensure_final_newline_on_save": false,
+	"format_on_save": "off",
+	"tab_bar": {
+		"show_nav_history_buttons": false,
+		"show_tab_bar_buttons": false,
+		// "show": false,
+	},
+	"toolbar": {
+		"breadcrumbs": false,
+		"quick_actions": false,
+	},
+	"project_panel": {
+		"entry_spacing": "standard",
+	},
+	"tabs": { "file_icons": true },
+	"git": {
+		"inline_blame": { "enabled": false },
+	},
+	"current_line_highlight": "none",
+	"prettier": {
+		"singleQuote": true,
+	},
+	"terminal": {
+		"dock": "bottom",
+		"font_family": "JetBrainsMonoNL Nerd Font",
+		"font_weight": 500.0,
+	},
+	"ui_font_family": "Iosevka Nerd Font Mono",
+	"ui_font_weight": 700.0,
+	"icon_theme": "Material Icon Theme",
+	"context_servers": {},
+	"disable_ai": false,
+	"agent_buffer_font_size": 14.0,
+	"agent_ui_font_size": 18.0,
+	"expand_excerpt_lines": 16,
+	"agent": {
+		"default_profile": "ask",
+		"always_allow_tool_actions": true,
+		"default_model": {
+			"provider": "copilot_chat",
+			"model": "grok-code-fast-1",
+		},
+		"model_parameters": [],
+	},
+	"features": {
+		"edit_prediction_provider": "zed",
+	},
+	"hard_tabs": true,
+	"buffer_font_family": "Iosevka Nerd Font Mono",
+	"buffer_font_weight": 600.0,
+	"buffer_line_height": { "custom": 1.2 },
+	"vim_mode": true,
+	"relative_line_numbers": "enabled",
+	"file_types": {
+		"html": ["*.html"],
+		"python": ["*.py"],
+	},
+	"base_keymap": "VSCode",
+	"ui_font_size": 16.8,
+	"buffer_font_size": 18.0,
+	"theme": {
+		"light": "Github Light Colorblind",
+		"mode": "dark",
+		"dark": "Tokyo Night",
+	},
+	"experimental.theme_overrides": {
+		"players": [
+			{
+				"selection": "#3D5564",
+				"cursor": "#A8F2F1",
+			},
+		],
+		"panel.background": "#090B17",
+		"surface.background": "#090B17",
+		"element.background": "#090B17", // Background of items in the tree
+		"element.hover": "#161b2e", // Subtle highlight when hovering over files
+		"element.active": "#3d59a1",
 
-    "panel.background": "#00000000",
-    "editor.background": "#00000000",
-    "terminal.background": "#00000066",
-    "tab_bar.background": "#00000000",
-    "status_bar.background": "#00000000",
-    "toolbar.background": "#00000000",
-    "editor.gutter.background": "#00000000",
+		"ghost_element.selected": "#212d3d", // Faded steel blue
+		"ghost_element.hover": "#161e2a", // Very subtle lift
+		"ghost_element.active": "#2d3c52", // Slightly brighter for the "click"
 
-    "tab.active_background": "#313244",
-    "tab.inactive_background": "#00000000",
+		"element.selected": "#2e3c64",
 
-    "border": "#00000000",
-    "border.variant": "#00000000",
-    "border.focused": "#ffffff",
+		"background.appearance": "opaque",
+		"editor.background": "#090B17",
+		"editor.gutter.background": "#090B17",
+		"editor.hover_line_number": "#090B17",
+		"toolbar.background": "#090B17",
+		"status_bar.background": "#090B17",
+		"title_bar.background": "#090B17",
+		"pane.focused_border": "#3d59a1",
+		"terminal.background": "#090B17",
 
-    "elevated_surface.background": "#1e1e2e",
+		"tab_bar.background": "#05060e",
+		"tab.active_background": "#161b2e",
+		"tab.inactive_background": "#090B17",
 
-    // 4. SOLID Hover Information (LSP / Errors)
-    "hint.background": "#0C0C14",
-    "error.background": "#0C0C14",
-    "warning.background": "#0C0C14",
-    "info.background": "#0C0C14",
+		"version_control.added": "#00ff00ff",
+		"version_control.deleted": "#ff0000ff",
+	},
 
-    // 5. Title Bar (Solid)
-    "title_bar.background": "#0C0C14"
-  },
-  "gutter": {
-    "min_line_number_digits": 0,
-    "line_numbers": true,
-    "runnables": false, // Removes the "play" button space (for tests/main)
-    "folds": false, // Removes the arrow space for collapsing code
-    "breakpoints": false // Removes the red dot space for debugging
-  },
-  "diagnostics": {
-    "inline": {
-      "enabled": true
-    }
-  }
+	// "experimental.theme_overrides": {
+	//   "background": "#0C0C14BF",
+	//   "background.appearance": "blurred",
+
+	//   "panel.background": "#00000000",
+	//   "editor.background": "#00000000",
+	//   "terminal.background": "#00000066",
+	//   "tab_bar.background": "#00000000",
+	//   "status_bar.background": "#00000000",
+	//   "toolbar.background": "#00000000",
+	//   "editor.gutter.background": "#00000000",
+
+	//   "tab.active_background": "#313244",
+	//   "tab.inactive_background": "#00000000",
+
+	//   "border": "#00000000",
+	//   "border.variant": "#00000000",
+	//   "border.focused": "#ffffff",
+
+	//   "elevated_surface.background": "#1e1e2e",
+
+	//   // 4. SOLID Hover Information (LSP / Errors)
+	//   "hint.background": "#0C0C14",
+	//   "error.background": "#0C0C14",
+	//   "warning.background": "#0C0C14",
+	//   "info.background": "#0C0C14",
+
+	//   // 5. Title Bar (Solid)
+	//   "title_bar.background": "#0C0C14",
+	// },
+	"gutter": {
+		"min_line_number_digits": 0,
+		"line_numbers": true,
+		"runnables": false, // Removes the "play" button space (for tests/main)
+		"folds": true, // Removes the arrow space for collapsing code
+		"breakpoints": false, // Removes the red dot space for debugging
+	},
+	"diagnostics": {
+		"inline": {
+			"enabled": true,
+		},
+	},
 }

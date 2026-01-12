@@ -6,39 +6,56 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-  // Default Workspace bindings
+	{
+		"context": "Editor && vim_mode == visual",
+		"bindings": {
+			"=" : "editor::FormatSelections"
+		}
+	},
   {
-    "context": "Workspace",
+  "context": "Workspace && !(vim_mode == insert) && !Terminal",
     "bindings": {
-      // Toggle the File Finder (Shift-Shift)
-      "shift shift": "file_finder::Toggle",
-      // Toggle the Terminal Panel (Ctrl-`)
-      "ctrl-`": "workspace::ToggleBottomDock"
+      "space f f": "file_finder::Toggle",
     }
   },
-  // Insert Mode bindings
-  {
-    "context": "Editor && vim_mode == insert",
+	{ 
+		"context": "Editor",
+		"bindings":{ 
+			"ctrl-e" : "project_panel::ToggleFocus",
+		}
+	},
+	{
+    "context": "ProjectPanel",
     "bindings": {
-      // Exit Insert mode (jj or JJ)
-      "j j": "vim::NormalBefore",
-      "shift-j shift-j": "vim::NormalBefore"
+    	"ctrl-e" : "project_panel::ToggleFocus",
     }
   },
-  // Normal mode setting
-  {
-    "context": "Editor && vim_mode == normal",
-    "bindings": {
-      ";": "command_palette::Toggle",
-      "ctrl-c": ["workspace::SendKeystrokes", ": % y enter"],
-      "ctrl-b": "workspace::ToggleLeftDock",
-      "ctrl-q": "pane::CloseActiveItem"
-    }
-  },
-  {
-    "context": "Editor && (vim_mode == visual || vim_mode == visual_line || vim_mode == visual_block)",
-    "bindings": {
-      "p": ["workspace::SendKeystrokes", "P"]
-    }
-  }
+	{
+		"context": "Editor && VimControl && vim_mode == normal",
+		"bindings": {
+			"space d d": "diagnostics::Deploy"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			"j j": "vim::NormalBefore",
+			"shift-j shift-j": "vim::NormalBefore",
+		},
+	},
+	{
+		"context": "Editor && vim_mode == normal",
+		"bindings": {
+			";": "command_palette::Toggle",
+			"ctrl-c": ["workspace::SendKeystrokes", ": % y enter"],
+			// "ctrl-b": "workspace::ToggleLeftDock",
+			"ctrl-q": "pane::CloseActiveItem",
+		},
+	},
+	{
+		"context": "Editor && (vim_mode == visual || vim_mode == visual_line || vim_mode == visual_block)",
+		"bindings": {
+			"p": ["workspace::SendKeystrokes", "P"],
+		},
+	},
 ]
