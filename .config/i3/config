@@ -215,3 +215,4 @@ exec_always --no-startup-id xset r rate 200 200
 bindsym $mod+b workspace 2;exec brave
 exec_always --no-startup-id xsetroot -solid "#0C0C14"
 exec --no-startup-id xrandr --output HDMI-A-0 --same-as eDP
+exec --no-startup-id dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
